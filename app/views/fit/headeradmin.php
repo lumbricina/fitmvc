@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="homedosen">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="homeadmin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="homedosen">
+                <a class="nav-link" href="homeadmin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -53,17 +53,23 @@
             <div class="sidebar-heading">
                 Menu
             </div>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="pengajuan">
+            <li class="nav-item">
+                <a class="nav-link" href="proposal">
                     <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Pengajuan</span></a>
-            </li> -->
+                    <span>Proposal</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="proposal">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Jadwal Sidang</span></a>
+            </li>
+
                         <!-- Nav Item - Lobi -->
-                        <li class="nav-item">
+            <!--            <li class="nav-item">
                 <a class="nav-link" href="lobidosen">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Lobi</span></a>
-            </li>  
+            </li>  -->
 
             
             <!-- Divider -->
