@@ -1,4 +1,5 @@
 <?php $data['page_title'] = "forgot";?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,60 +23,27 @@
     <link href="<?=ASSETS?>fit/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-<body class="bg-gradient-primary">
+            <!-- Main Content -->
+            <div id="content">
 
-    <div class="container">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                                        <p class="mb-4">We get it, stuff happens. Just enter your email address below
-                                            and we'll send you a link to reset your password!</p>
-                                    </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <a href="login" class="btn btn-primary btn-user btn-block">
-                                            Reset Password
-                                        </a>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- 404 Error Text -->
+                    <div class="text-center">
+                        <div class="h1 pt-5 mx-auto text-center">08123456789</div>
+                        <p class="lead text-gray-800 mb-5">Admin-Name</p>
+                        <p class="text-gray-500 mb-0">Kalo mau ganti password silahkan hubungi nomer diatas</p>
+                        <a href="login">&larr; Back to Login</a>
                     </div>
+
                 </div>
+                <!-- /.container-fluid -->
 
             </div>
+            <!-- End of Main Content -->
 
-        </div>
-
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-</body>
-
-</html>
+            <?php $this->view("fit/footer",$data);?>
