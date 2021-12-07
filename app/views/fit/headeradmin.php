@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Dosen</div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
 
             <!-- Divider -->
@@ -59,7 +59,7 @@
                     <span>Proposal</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="proposal">
+                <a class="nav-link" href="jadwalsidang">
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Jadwal Sidang</span></a>
             </li>
