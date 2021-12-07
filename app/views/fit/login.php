@@ -17,19 +17,19 @@ if(isset($_POST['login'])){
       $_SESSION['user']=array(
    'username'=>$row['username'],
    'password'=>$row['password'],
-   'role'=>$row['role']
+   'role'=>$row['level']
    );
    $role=$_SESSION['user']['role'];
    //Redirecting User Based on Role
     switch($role){
   case '3':
-  header('location:index.php');
+  header('location:index');
   break;
   case '2':
-  header('location:homedosen.php');
+  header('location:homedosen');
   break;
   case '1':
-  header('location:homeadmin.php');
+  header('location:homeadmin');
   break;
  }
  }else{
