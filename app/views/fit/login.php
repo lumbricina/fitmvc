@@ -8,7 +8,6 @@ if(isset($_POST['login'])){
   if(empty($username)&&empty($password)){
   $error= 'Fields are Mandatory';
   }else{
-      
  //Checking Login Detail
  $result=mysqli_query($conn,"SELECT*FROM user WHERE username='$username' AND password='$password'");
  $row=mysqli_fetch_assoc($result);
