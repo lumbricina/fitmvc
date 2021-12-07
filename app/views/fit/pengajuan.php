@@ -43,7 +43,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Tabel Logging</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive-sm">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -51,6 +51,7 @@
                                             <th>Pembimbing 2</th>
                                             <th>Judul</th>
                                             <th>Status</th>
+                                            <th>Feedback / Revisi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,6 +60,7 @@
                                             <td>Nina</td>
                                             <td>Aplikasi something</td>
                                             <td>acc/tolak</td>
+                                            <td>pidback</td>
                                             </tr>
                                     </tbody>
                                 </table>

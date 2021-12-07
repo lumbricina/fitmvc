@@ -4,13 +4,12 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Log Book</h1>
-                    <p class="mb-4">Diary</p>
+                    <h1 class="h3 mb-2 text-gray-800">Jadwal Sidang</h1>
 
-                    <!-- Form Lobi -->
+                    <!-- Form Tambah jadwal sidang -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Form Lobi</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Form Tambah Jadwal Sidang</h6>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -25,30 +24,32 @@
                                     <input type="time" class="form-control form-control-user"
                                         id="time" aria-describedby="time"> 
                                     </div> </div>                                            
-                            <h7 class="text-gray-900 mb-4">Isi</h7>
+                            <h7 class="text-gray-900 mb-4">Nama Mahasiswa</h7>
                                                                 
                                     <input type="text" class="form-control form-control-user"
                                     id="text" aria-describedby="text"                                        
                                     placeholder="masukan isi" autocomplete="off">
                             </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block" form="lobi" value="Submit">Submit</button>                                                  
+                                <button type="submit" class="btn btn-primary btn-user btn-block" form="jadwal" value="Submit">Submit</button>                                                  
                             </div></div>
 
                     <!-- DataTales Example -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Tabel Logging</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Tabel Jadwal Sidang</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive-sm">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
                                             <th>Waktu</th>
-                                            <th>Isi</th>
-                                            <th>Status</th>
+                                            <th>Nama Mahasiswa</th>
+                                            <th>Judul</th>
+                                            <th>Pembimbing 1</th>
+                                            <th>Pembimbing 2</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -56,8 +57,10 @@
                                         <tr>
                                             <td>01/01/2022</td>
                                             <td>15:00 WIB</td>
-                                            <td>Buat proposal TA</td>
-                                            <td>acc/tolak</td>
+                                            <td>Blablabla</td>
+                                            <td>JUDULNYA</td>
+                                            <td>pem1</td>
+                                            <td>pem2</td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -66,12 +69,11 @@
                                                     aria-expanded="false">
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
-                                                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                                                    <div class="dropdown-menu animated--fade-in" title="edit/delete" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item" href="#">Edit</a>
                                                         <a class="dropdown-item" href="#">Delete</a>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-success btn-circle btn-sm ml-2" href="#"><i class="fas fa-check"></i></a>
                                             </div></div>
                                             </td>
                                         </tr>
