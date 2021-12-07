@@ -1,4 +1,42 @@
 <?php $data['page_title'] = "login";?>
+<?php
+$conn=mysqli_connect('localhost','root','','fit');
+//Getting Input value
+if(isset($_POST['login'])){
+  $username=mysqli_real_escape_string($conn,$_POST['username']);
+  $password=mysqli_real_escape_string($conn,$_POST['password']);
+  if(empty($username)&&empty($password)){
+  $error= 'Fileds are Mandatory';
+  }else{
+ //Checking Login Detail
+ $result=mysqli_query($conn,"SELECT*FROM user WHERE username='$username' AND password='$password'");
+ $row=mysqli_fetch_assoc($result);
+ $count=mysqli_num_rows($result);
+ if($count==1){
+      $_SESSION['user']=array(
+   'username'=>$row['username'],
+   'password'=>$row['password'],
+   'role'=>$row['role']
+   );
+   $role=$_SESSION['user']['role'];
+   //Redirecting User Based on Role
+    switch($role){
+  case '3':
+  header('location:index.php');
+  break;
+  case '2':
+  header('location:homedosen.php');
+  break;
+  case '1':
+  header('location:homeadmin.php');
+  break;
+ }
+ }else{
+ $error='Your Password or UserName is not Found';
+ }
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +80,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
                                     </div>
-                                    <form class="user" method="POST">
+                                    <form action="" class="user" method="post">
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control form-control-user" autocomplete="off"
                                                 placeholder="Enter Username">
@@ -58,9 +96,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <input type="submit" name="login" value="Login" class="btn btn-primary btn-user btn-block">
                                         <hr>
                                     </form>
                                     <div class="text-center">
