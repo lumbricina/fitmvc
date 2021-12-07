@@ -8,7 +8,7 @@
                     <p class="mb-4">Diary</p>
 
                     <!-- Form Lobi -->
-                    <div class="card shadow mb-4">
+<!--                    <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Form Lobi</h6>
                         </div>
@@ -33,7 +33,7 @@
                             </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block" form="lobi" value="Submit">Submit</button>                                                  
                             </div></div>
-
+-->
                     <!-- DataTales Example -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -45,33 +45,53 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Nama</th>
                                             <th>Tanggal</th>
                                             <th>Waktu</th>
                                             <th>Isi</th>
                                             <th>Status</th>
+                                            <th>Revisi</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>Milenia Ulwan Zafira</td>
                                             <td>01/01/2022</td>
                                             <td>15:00 WIB</td>
                                             <td>Buat proposal TA</td>
                                             <td>acc/tolak</td>
+                                            <td>isi repisi</td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
                                                     <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
+                                                    id="dropdownMenuButton" data-toggle="modal" aria-haspopup="true" data-target="#poprevisi"
+                                                    aria-expanded="false" title="Revisi">
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
-                                                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    <div class="modal fade" id="poprevisi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Revisi</h5>
+                                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">×</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">Masukkan feedback / revisi</div>
+                                                                <div class="form-group p-3">
+                                                                <input type="text" class="form-control form-control-user" id="text" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                    <a class="btn btn-primary" href="#">Submit</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-success btn-circle btn-sm ml-2" href="#"><i class="fas fa-check"></i></a>
+                                                <a class="btn btn-success btn-circle btn-sm ml-2" href="#" title="Setujui"><i class="fas fa-check"></i></a>
                                             </div></div>
                                             </td>
                                         </tr>
