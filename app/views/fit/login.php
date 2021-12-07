@@ -6,7 +6,7 @@ if(isset($_POST['login'])){
   $username=mysqli_real_escape_string($conn,$_POST['username']);
   $password=mysqli_real_escape_string($conn,$_POST['password']);
   if(empty($username)&&empty($password)){
-  $error= 'Fileds are Mandatory';
+  $error= 'Fields are Mandatory';
   }else{
       
  //Checking Login Detail
@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
       $_SESSION['user']=array(
    'username'=>$row['username'],
    'password'=>$row['password'],
-   'role'=>$row['level']
+   'role'=>$row['role']
    );
    $role=$_SESSION['user']['role'];
    //Redirecting User Based on Role
