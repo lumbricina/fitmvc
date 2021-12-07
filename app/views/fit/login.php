@@ -44,13 +44,12 @@
                                     </div>
                                     <form class="user" method="post">
                                         <div class="form-group">
-                                            <input type="username" name="username" class="form-control form-control-user" autocomplete="off"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Username...">
+                                            <input type="text" name="username" class="form-control form-control-user" autocomplete="off"
+                                                placeholder="Enter Username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                placeholder="Enter Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
