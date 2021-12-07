@@ -80,7 +80,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">Masukkan feedback / revisi</div>
-                                                                <div class="form-group p-3">
+                                                                <div class="form-group px-3 pb-3">
                                                                 <input type="text" class="form-control form-control-user" id="text" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
                                                                 </div>
                                                                 <div class="modal-footer">
