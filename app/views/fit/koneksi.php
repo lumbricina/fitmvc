@@ -13,10 +13,14 @@ if(isset($_POST['login'])){
  $count=mysqli_num_rows($result);
  if($count==1){
       $_SESSION['user']=array(
-   'username'=>$row['username'],
-   'password'=>$row['password'],
-   'role'=>$row['role']
+        'nama'=>$row['nama'],
+        'username'=>$row['username'],
+        'password'=>$row['password'],
+        'role'=>$row['role']
    );
+   $_SESSION['nama']=array(
+    'nama'=>$row['nama']);
+
    $role=$_SESSION['user']['role'];
    //Redirecting User Based on Role
     switch($role){
