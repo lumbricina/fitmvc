@@ -5,8 +5,7 @@
     }else{
 
     }
-
-        
+    
 ?>
 
 <?php $data['page_title'] = "Home"; $this->view("fit/header",$data);?>
