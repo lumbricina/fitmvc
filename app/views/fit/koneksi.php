@@ -18,8 +18,6 @@ if(isset($_POST['login'])){
         'password'=>$row['password'],
         'role'=>$row['role']
    );
-   $_SESSION['nama']=array(
-    'nama'=>$row['nama']);
 
    $role=$_SESSION['user']['role'];
    //Redirecting User Based on Role
