@@ -2,7 +2,7 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user'])) {
     $_SESSION = array();
 
     if (isset($_COOKIE[session_name()])) {
@@ -12,7 +12,7 @@ if (isset($_SESSION['username'])) {
     session_destroy();
 }
 
-setcookie('username', '', time() - 3600);
+setcookie('user', '', time() - 3600);
 
 header('location:login');
 

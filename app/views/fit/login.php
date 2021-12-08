@@ -52,12 +52,12 @@
                                             <input type="password" name="password" class="form-control form-control-user"
                                                 placeholder="Enter Password">
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
+                                        <div class="form-group p-3">
+                                        <!--    <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" name="remember" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Remember
                                                     Me</label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <input type="submit" name="login" value="Login" class="btn btn-primary btn-user btn-block">
                                         <hr>
@@ -77,14 +77,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=ASSETS?>fit/vendor/jquery/jquery.min.js"></script>
+    <script src="<?=ASSETS?>fit/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?=ASSETS?>fit/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="<?=ASSETS?>fit/js/sb-admin-2.min.js"></script>
 
 </body>
 
