@@ -2,6 +2,8 @@
     if(!isset($_SESSION['user'])){
         header('location:login');
         session_destroy();
+    }elseif ($_SESSION['user']['role']!=3) {
+        session_destroy();
     }else{
 
     }
