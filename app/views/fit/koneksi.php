@@ -1,5 +1,6 @@
 <?php
 $conn=mysqli_connect('localhost','root','','fit');
+
 //Getting Input value
 if(isset($_POST['login'])){
   $username=mysqli_real_escape_string($conn,$_POST['username']);
@@ -7,6 +8,7 @@ if(isset($_POST['login'])){
   if(empty($username)&&empty($password)){
   $error= 'Fields are Mandatory';
 }else{
+
   //Checking Login Detail
   $result=mysqli_query($conn,"SELECT*FROM user WHERE username='$username' AND password='$password'");
   $row=mysqli_fetch_assoc($result);
@@ -20,21 +22,21 @@ if(isset($_POST['login'])){
     );
 
     $role=$_SESSION['user']['role'];
+    
     //Redirecting User Based on Role
       switch($role){
-    case '3':
-    header('location:index');
-    break;
-    case '2':
-    header('location:homedosen');
-    break;
-    case '1':
-    header('location:homeadmin');
-    break;
-  }
-  }else{
-    
-  $error='Your Password or UserName is not Found';
+        case '3':
+        header('location:index');
+        break;
+        case '2':
+        header('location:homedosen');
+        break;
+        case '1':
+        header('location:homeadmin');
+        break;
+      }
+  }else{  
+    $error='Your Password or UserName is not Found';
   }
   }
 }
