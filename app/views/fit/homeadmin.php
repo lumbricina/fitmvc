@@ -82,5 +82,5 @@
             <!-- End of Main Content -->
 
 
-            <?php $this->view("fit/footeradmin", $data);?>
+            <?php $this->view("fit/footer", $data);?>
             
