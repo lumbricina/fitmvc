@@ -1,3 +1,14 @@
+<?php 
+    if(!isset($_SESSION['user'])){
+        header('location:login');
+        session_destroy();
+    }else{
+
+    }
+
+        
+?>
+
 <?php $data['page_title'] = "Home"; $this->view("fit/header",$data);?>
 
         

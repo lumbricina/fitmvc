@@ -6,35 +6,36 @@ if(isset($_POST['login'])){
   $password=mysqli_real_escape_string($conn,$_POST['password']);
   if(empty($username)&&empty($password)){
   $error= 'Fields are Mandatory';
-  }else{
- //Checking Login Detail
- $result=mysqli_query($conn,"SELECT*FROM user WHERE username='$username' AND password='$password'");
- $row=mysqli_fetch_assoc($result);
- $count=mysqli_num_rows($result);
- if($count==1){
-      $_SESSION['user']=array(
-        'nama'=>$row['nama'],
-        'username'=>$row['username'],
-        'password'=>$row['password'],
-        'role'=>$row['role']
-   );
+}else{
+  //Checking Login Detail
+  $result=mysqli_query($conn,"SELECT*FROM user WHERE username='$username' AND password='$password'");
+  $row=mysqli_fetch_assoc($result);
+  $count=mysqli_num_rows($result);
+  if($count==1){
+        $_SESSION['user']=array(
+          'nama'=>$row['nama'],
+          'username'=>$row['username'],
+          'password'=>$row['password'],
+          'role'=>$row['role']
+    );
 
-   $role=$_SESSION['user']['role'];
-   //Redirecting User Based on Role
-    switch($role){
-  case '3':
-  header('location:index');
-  break;
-  case '2':
-  header('location:homedosen');
-  break;
-  case '1':
-  header('location:homeadmin');
-  break;
- }
- }else{
- $error='Your Password or UserName is not Found';
- }
-}
+    $role=$_SESSION['user']['role'];
+    //Redirecting User Based on Role
+      switch($role){
+    case '3':
+    header('location:index');
+    break;
+    case '2':
+    header('location:homedosen');
+    break;
+    case '1':
+    header('location:homeadmin');
+    break;
+  }
+  }else{
+    
+  $error='Your Password or UserName is not Found';
+  }
+  }
 }
 ?>
