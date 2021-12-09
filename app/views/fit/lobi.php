@@ -38,7 +38,7 @@ echo'
                                     id="text" name="isi"                                        
                                     placeholder="masukan isi" autocomplete="off">
                             </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block" form="lobi" value="Submit">Submit</button>                                                  
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
                             </div></form></div>
 
 
