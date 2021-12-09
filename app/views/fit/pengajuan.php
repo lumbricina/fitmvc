@@ -1,12 +1,7 @@
-<?php 
-    if(!isset($_SESSION['user'])){
-        header('location:login');
-        session_destroy();
-    }else {
-
-    }
-    
-?><?php $data['page_title'] = "Pengajuan";$this->view("fit/header", $data); include('koneksi.php');?>
+<?php $data['page_title'] = "Pengajuan";$this->view("fit/header", $data); include('koneksi.php');
+$nama=$_SESSION['user']['nama'];
+$query = "SELECT*FROM proposal WHERE nama='$nama'";
+?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -77,25 +72,17 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $columns=['id','date','time','nama','pembimbing1','pembimbing2','judul','ringkasan','status'];
-                                            $fetchData=fetch_data($conn, 'proposal', $columns);
-                                            if(is_array($fetchData)){
-                                                foreach($fetchData as $data){
+                                            $result = $conn->query($query);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
                                         ?>
                                         <tr>
-                                            <td><?php echo $data['pembimbing1']??'';?></td>
-                                            <td><?php echo $data['pembimbing2']??'';?></td>
-                                            <td><?php echo $data['judul']??'';?></td>
-                                            <td><?php echo $data['status']??'';?></td>
-                                            <td><?php echo $data['revisi']??'';?></td>
-                                        </tr>
-                                        <?php
-                                                }
-                                            } else { 
-
-                                            }
-                                        ?> 
-                                        
+                                            <td><?php echo$row["pembimbing1"];?></td>
+                                            <td><?php echo$row["pembimbing2"];?></td>
+                                            <td><?php echo$row["judul"];?></td>
+                                            <td><?php echo$row["status"];?></td>
+                                            <td><?php echo$row["revisi"];}}?></td>
+                                        </tr>                                        
                                     </tbody>
                                 </table>
                             </div>
