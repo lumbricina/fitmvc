@@ -20,7 +20,7 @@ $query = "SELECT*FROM proposal";?>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Tanggal</th>
+                                            <th>Tgl</th>
                                             <th>Mahasiswa</th>
                                             <th>Judul</th>
                                             <th>Pembimbing 1</th>
