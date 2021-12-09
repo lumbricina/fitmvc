@@ -20,7 +20,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Form Pengajuan</h6>
                         </div>
                         <div class="card-body">
-                            <form name="lobi" action="uppropo" method="POST">
+                            <form name="propo" action="uppropo" method="POST">
                             <div class="form-group">
                                 <div class="row">
                                 <div class="col-lg-6">

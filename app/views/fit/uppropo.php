@@ -16,9 +16,10 @@ if(isset($_POST['pem1']))
     $prop="INSERT INTO proposal (id, date, time, nama, pembimbing1, pembimbing2, judul, ringkasan) VALUES (NULL, '$date', '$time', '$mahasiswa','$pem1','$pem2','$judul','$ringkasan')";
 
     if(mysqli_query($conn, $prop)){
-        echo "uda";
+        header('location:pengajuan');
     }else{
         echo "eror: " . mysqli_error($conn);
+        header('Refresh : 3, location:pengajuan');
     }
 }
 
