@@ -4,14 +4,6 @@ include('koneksi.php');
 $nama=$_SESSION['user']['nama'];
 $query = "SELECT*FROM lobi WHERE nama='$nama'";
 
-if ($result = $conn->query($query)) {
-    while ($row = $result->fetch_assoc()) {
-        $field1name = $row["date"];
-        $field2name = $row["time"];
-        $field3name = $row["isi"];
-        $field4name = $row["status"];}
-        $result->free();
-    }
 echo'
 
                 <!-- Begin Page Content -->
@@ -55,8 +47,10 @@ echo'
                             <h6 class="m-0 font-weight-bold text-primary">Tabel Logging</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <div class="table-responsive">';
+                            $result = $conn->query($query);
+                                if ($result->num_rows > 0) {
+                                echo '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
@@ -66,12 +60,13 @@ echo'
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>'.$field1name.'</td>
-                                            <td>'.$field2name.'</td>
-                                            <td>'.$field3name.'</td>
-                                            <td>'.$field4name.'</td>
+                                    <tbody>';
+                                    while($row = $result->fetch_assoc()) {
+                                    echo '<tr>
+                                            <td>',$row["date"],'</td>
+                                            <td>',$row["time"],'</td>
+                                            <td>',$row["isi"],'</td>
+                                            <td>',$row["status"],'</td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -89,9 +84,9 @@ echo'
                                             </div></div>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    </tbody>';}
+                                '</table>';}
+                            '</div>
                         </div>
                     </div>
                 <!-- /.container-fluid -->
