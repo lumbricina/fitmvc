@@ -1,4 +1,18 @@
-<?php $data['page_title'] = "Lobi";$this->view("fit/header", $data);?>
+<?php $data['page_title'] = "Lobi";
+$this->view("fit/header", $data);
+include('koneksi.php');
+$nama=$_SESSION['user']['nama'];
+$query = "SELECT*FROM lobi WHERE nama='$nama'";
+
+if ($result = $conn->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        $field1name = $row["date"];
+        $field2name = $row["time"];
+        $field3name = $row["isi"];
+        $field4name = $row["status"];}
+        $result->free();
+    }
+echo'
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -54,10 +68,10 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>01/01/2022</td>
-                                            <td>15:00 WIB</td>
-                                            <td>Buat proposal TA</td>
-                                            <td>acc/tolak</td>
+                                            <td>'.$field1name.'</td>
+                                            <td>'.$field2name.'</td>
+                                            <td>'.$field3name.'</td>
+                                            <td>'.$field4name.'</td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -84,5 +98,5 @@
 
             </div>
             <!-- End of Main Content -->
-
-            <?php $this->view("fit/footer", $data);?>
+';
+             $this->view("fit/footer", $data);?>
