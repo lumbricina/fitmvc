@@ -76,13 +76,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                            $columns=['id','date','time','nama','pembimbing1','pembimbing2','judul','ringkasan','status'];
+                                            $fetchData=fetch_data($conn, 'proposal', $columns);
+                                            if(is_array($fetchData)){
+                                                foreach($fetchData as $data){
+                                        ?>
                                         <tr>
-                                            <td>Lala</td>
-                                            <td>Nina</td>
-                                            <td>Aplikasi something</td>
-                                            <td>acc/tolak</td>
-                                            <td>pidback</td>
-                                            </tr>
+                                            <td><?php echo $data['pembimbing1']??'';?></td>
+                                            <td><?php echo $data['pembimbing2']??'';?></td>
+                                            <td><?php echo $data['judul']??'';?></td>
+                                            <td><?php echo $data['status']??'';?></td>
+                                            <td><?php echo $data['revisi']??'';?></td>
+                                        </tr>
+                                        <?php
+                                                }
+                                            } else { 
+
+                                            }
+                                        ?> 
+                                        
                                     </tbody>
                                 </table>
                             </div>
