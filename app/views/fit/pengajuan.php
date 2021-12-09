@@ -20,7 +20,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Form Pengajuan</h6>
                         </div>
                         <div class="card-body">
-                            <form action="uppropo/process" method="POST">
+                            <form name="lobi" action="uppropo" method="POST">
                             <div class="form-group">
                                 <div class="row">
                                 <div class="col-lg-6">
@@ -39,7 +39,7 @@
                                 <div class="col-lg-6">
                                 <h7 class="text-gray-900 mb-4">Pembimbing 2</h7>                                 
                                     <input type="text" class="form-control form-control-user mb-2"
-                                    name='pem2' id='pem2' aria-describedby="text">
+                                    name='pem2' id='pem2' aria-describedby="text" placeholder="nama pembimbing 2">
                                     </div> 
                                 </div>                                            
                                 <h7 class="text-gray-900 mb-4">Judul Tugas Akhir</h7>
@@ -47,42 +47,16 @@
                                     id="text" name="judul" aria-describedby="text"                                        
                                     placeholder="masukan judul" autocomplete="off">
                                 <h7 class="text-gray-900 mb-4">Ringkasan</h7>
-                                    <textarea type="text" name="ringkasan"class="form-control form-control-user mb-2"
+                                    <textarea type="text" name="ringkasan" class="form-control form-control-user mb-2"
                                     id="text" aria-describedby="text"                                        
-                                    placeholder="masukan ringkasan" autocomplete="off"> </textarea>
+                                    placeholder="masukan ringkasan" autocomplete="off"></textarea>
                             </div>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" form="lobi" value="submit"></input>  
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="submit"></input>  
                             </form>                                                
                         </div>
                     </div>
 
-                    <?php
-                    require('koneksi.php');
-                    $mahasiswa = $_SESSION['user']['nama'];
-                    $pembimbing1 = $_POST['pem1'];
-                    $pembimbing2 = $_POST['pem2'];
-                    $judul = $_POST['judul'];
-                    $ringkasan = $_POST['ringkasan'];
-
-                    if(isset($_POST["submit"])){
-                        if($prop="INSERT INTO proposal (id, time, mahasiswa, pembimbing1, pembimbing2, judul, ringkasan) VALUES (``, timestamp, `$mahasiswa`,`$pembimbing1`,`$pembimbing2`,`$judul`,`$ringkasan`);");
-                    }
-
-            
-            mysqli_query($conn, $prop);
-                    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
-    $email = $_POST['email'];
-
-    if(isset($_POST["submit"])){
-        if($query = mysql_query("INSERT INTO users ('id', 'username', 'password', 'email') VALUES('', '".$username."', '".$password."', '".$email."')")){
-            echo "Success";
-        }else{
-            echo "Failure" . mysql_error();
-        }
-    }
-?>
+                    
 
                      <!-- DataTales Example -->
                      <div class="card shadow mb-4">
