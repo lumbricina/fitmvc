@@ -51,7 +51,7 @@ echo'
                             <div class="table-responsive">';
                             $result = $conn->query($query);
                                 if ($result->num_rows > 0) {
-                                echo '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                echo '<table class="table table-bordered" style="overflow-x:auto;" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>

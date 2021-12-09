@@ -59,7 +59,7 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                             <h6 class="m-0 font-weight-bold text-primary">Tabel Logging</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive-sm">
+                            <div class="table-responsive-sm" style="overflow-x:auto;">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>

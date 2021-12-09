@@ -1,4 +1,7 @@
-<?php $data['page_title'] = "Proposal";$this->view("fit/headeradmin", $data);?>
+<?php $data['page_title'] = "Proposal";$this->view("fit/headeradmin", $data);
+include('koneksi.php');
+$nama=$_SESSION['user']['nama'];
+$query = "SELECT*FROM proposal";?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -13,29 +16,36 @@
                             <h6 class="m-0 font-weight-bold text-primary">Tabel Logging</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive-sm">
+                            <div class="table-responsive-sm" style="overflow-x:auto;">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
-                                            <th>Nama Mahasiswa</th>
+                                            <th>Mahasiswa</th>
                                             <th>Judul</th>
                                             <th>Pembimbing 1</th>
                                             <th>Pembimbing 2</th>
                                             <th>Ringkasan</th>
                                             <th>Status</th>
                                             <th>Action</th>
+                                            <th>Revisi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                            $result = $conn->query($query);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
                                         <tr>
-                                            <td>01/01/2022</td>
-                                            <td>Mint Chocolate</td>
-                                            <td>Pengembangan cokelat berbasis mint</td>
-                                            <td>KG</td>
-                                            <td>HG</td>
-                                            <td>ini ringkasan</td>
-                                            <td>acc/tolak</td>
+                                            <td><?php echo$row["date"];?></td>
+                                            <td><?php echo$row["nama"];?></td>
+                                            <td><?php echo$row["judul"];?></td>
+                                            <td><?php echo$row["pembimbing1"];?></td>
+                                            <td><?php echo$row["pembimbing2"];?></td>
+                                            <td><div style="width: 250px; height: 200px; overflow-y: auto; padding: right -100px;"><?php echo$row["ringkasan"];?></div></td>
+                                            <td><?php echo$row["status"];?></td>
+                                            
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -68,6 +78,7 @@
                                                 <a class="btn btn-success btn-circle btn-sm ml-2" href="#" title="Setujui"><i class="fas fa-check"></i></a>
                                             </div></div>
                                             </td>
+                                            <td><?php echo$row["revisi"];}}?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -80,4 +91,4 @@
             </div>
             <!-- End of Main Content -->
 
-            <?php $this->view("fit/footeradmin", $data);?>
+            <?php $this->view("fit/footer", $data);?>
