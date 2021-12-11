@@ -11,7 +11,11 @@ if(!isset($_SESSION['user'])){
 }else {
 
 }
-$data['page_title'] = "JadwalSidang";$this->view("fit/headeradmin", $data);?>
+$data['page_title'] = "JadwalSidang";$this->view("fit/headeradmin", $data);
+include("koneksi.php");
+#$nama=mysqli_fetch_assoc(mysqli_query("SELECT * FROM pembimbing"));
+$query = "SELECT jadwalsidang.mahasiswa, proposal.nama FROM jadwalsidang INNER JOIN proposal ON jadwalsidang.mahasiswa=proposal.nama";
+?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -67,13 +71,18 @@ $data['page_title'] = "JadwalSidang";$this->view("fit/headeradmin", $data);?>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                            $result = $conn->query($query);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
                                         <tr>
-                                            <td>01/01/2022</td>
-                                            <td>15:00 WIB</td>
-                                            <td>Blablabla</td>
-                                            <td>JUDULNYA</td>
-                                            <td>pem1</td>
-                                            <td>pem2</td>
+                                            <td><?php echo$row["tanggal"];?></td>
+                                            <td><?php echo$row["waktu"];?></td>
+                                            <td><?php echo$row["mahasiswa"];?></td>
+                                            <td><?php echo$row["judul"];?></td>
+                                            <td><?php echo$row["pembimbing1"];?></td>
+                                            <td><?php echo$row["pembimbing2"];}}?></td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
