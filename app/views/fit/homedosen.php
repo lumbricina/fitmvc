@@ -14,7 +14,7 @@ if(!isset($_SESSION['user'])){
     
 ?>
 <?php $data['page_title'] = "HomeDosen"; $this->view("fit/headerdosen",$data);include("koneksi.php");
-$query="SELECT * FROM tawarandosen"
+$query="SELECT * FROM tawarandosen";
 ?>
 
         

@@ -14,7 +14,10 @@
     
 ?>
 
-<?php $data['page_title'] = "Home"; $this->view("fit/header",$data);?>
+<?php $data['page_title'] = "Home"; $this->view("fit/header",$data); include("koneksi.php");
+$query="SELECT * FROM tawarandosen";
+$nama=$_SESSION['user']['nama'];
+$nrp="SELECT username FROM user WHERE nama='$nama'";?>
 
         
 
@@ -30,7 +33,7 @@
                     <div class="row">
 
                     <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-7 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header -->
                                 <div
@@ -39,11 +42,25 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="text">
-                                        <dd class="text-left">Tawaran Judul</dd>
-                                        <div class="text-left small text-primary">
-                                        <p>Nama Dosen</p>
-                                    </div>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Judul</th>
+                                            <th>Dosen</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $result = $conn->query($query);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo$row["penawaran"];?></td>
+                                            <td><?php echo$row["dosen"];}}?></td>
+                                        </tr>                                        
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
                         </div>                        
@@ -62,10 +79,10 @@
                                 <div class="card-body">
                                     <h6>Nama</h6>
                                     <div class="text-left sup text-primary">
-                                        <p>Nama Mahasiswa</p></div>
+                                        <p><?php echo $nama;?></p></div>
                                     <h6>NRP</h6>
                                     <div class="text-left sup text-primary">
-                                        <p>NRP Mahasiswa</p></div>
+                                        <p><?php echo $nrp;?></p></div>
                                     <h6>Dosbing 1</h6>
                                     <div class="text-left sup text-primary">
                                         <p>Nama Dosbing 1</p></div>
