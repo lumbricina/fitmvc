@@ -42,6 +42,7 @@ $nrp=mysqli_fetch_assoc(mysqli_query($conn,"SELECT username FROM user WHERE nama
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
+                                    <p>Hubungi dosen terkait untuk mengambil judul :v</p>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
