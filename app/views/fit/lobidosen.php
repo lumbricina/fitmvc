@@ -19,7 +19,7 @@ if(!isset($_SESSION['user'])){
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Log Book Mahasiswa</h1>
-                    <p class="mb-4">Diary</p>
+                    <p class="mb-4">Pembimbing 1 harap melakukan persetujuan (acc) lobi mahasiswa </p>
 
                     <!-- Form Lobi -->
 <!--                    <div class="card shadow mb-4">
