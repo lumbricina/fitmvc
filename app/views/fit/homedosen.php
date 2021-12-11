@@ -13,7 +13,9 @@ if(!isset($_SESSION['user'])){
 }
     
 ?>
-<?php $data['page_title'] = "HomeDosen"; $this->view("fit/headerdosen",$data);include("koneksi.php");?>
+<?php $data['page_title'] = "HomeDosen"; $this->view("fit/headerdosen",$data);include("koneksi.php");
+$query="SELECT * FROM tawarandosen"
+?>
 
         
 
@@ -55,10 +57,25 @@ if(!isset($_SESSION['user'])){
                                             </div>
                                         </div>
                                 <div class="text">
-                                        <dd class="text-left">Tawaran Judul</dd>
-                                        <div class="text-left small text-primary">
-                                        <p>Nama Dosen</p>
-                                    </div>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Judul</th>
+                                            <th>Dosen</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $result = $conn->query($query);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo$row["penawaran"];?></td>
+                                            <td><?php echo$row["dosen"];}}?></td>
+                                        </tr>                                        
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
                         </div>                        
