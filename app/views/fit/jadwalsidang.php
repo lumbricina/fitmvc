@@ -14,7 +14,7 @@ if(!isset($_SESSION['user'])){
 $data['page_title'] = "JadwalSidang";$this->view("fit/headeradmin", $data);
 include("koneksi.php");
 #$nama=mysqli_fetch_assoc(mysqli_query("SELECT * FROM pembimbing"));
-$query = "SELECT jadwalsidang.mahasiswa, proposal.nama FROM jadwalsidang INNER JOIN proposal ON jadwalsidang.mahasiswa=proposal.nama";
+$result = mysqli_query($conn, "SELECT jadwalsidang.tanggal, jadwalsidang.waktu, jadwalsidang.mahasiswa, proposal.judul, proposal.pembimbing1, proposal.pembimbing2 FROM proposal, jadwalsidang ON proposal.nama=jadwalsidang.mahasiswa");
 ?>
 
                 <!-- Begin Page Content -->
@@ -51,7 +51,6 @@ $query = "SELECT jadwalsidang.mahasiswa, proposal.nama FROM jadwalsidang INNER J
                             </div></div>
 
                     <!-- DataTales Example -->
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Tabel Jadwal Sidang</h6>
@@ -72,17 +71,17 @@ $query = "SELECT jadwalsidang.mahasiswa, proposal.nama FROM jadwalsidang INNER J
                                     </thead>
                                     <tbody>
                                     <?php
-                                            $result = $conn->query($query);
-                                            if ($result->num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
+                                            #$result = $conn->query($query);
+                                            #if ($result->num_rows > 0) {
+                                                while($row = $result->mysqli_fetch_alias_array()) {
                                         ?>
                                         <tr>
                                             <td><?php echo$row["tanggal"];?></td>
                                             <td><?php echo$row["waktu"];?></td>
                                             <td><?php echo$row["mahasiswa"];?></td>
-                                            <td><?php echo$row["judul"];?></td>
-                                            <td><?php echo$row["pembimbing1"];?></td>
-                                            <td><?php echo$row["pembimbing2"];}}?></td>
+                                            <td><?php echo$row["proposal.judul"];?></td>
+                                            <td><?php echo$row["proposal.pembimbing1"];?></td>
+                                            <td><?php echo$row["proposal.pembimbing2"];}?></td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
