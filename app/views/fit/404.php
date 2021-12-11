@@ -1,4 +1,4 @@
-<?php $data['page_title'] = "404"; $this->view("fit/header",$data);?>
+<?php $data['page_title'] = "404"; ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
