@@ -1,4 +1,7 @@
-<?php $data['page_title'] = "Repo"; $this->view("fit/header",$data);?>
+<?php $data['page_title'] = "Repo"; $this->view("fit/header",$data);
+include('koneksi.php');
+$nama=$_SESSION['user']['nama'];
+$query = "SELECT*FROM proposal WHERE nama='$nama'";?>
 
                   <!-- Begin Page Content -->
                   <div class="container-fluid">
@@ -25,12 +28,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                            $result = $conn->query($query);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Ali</td>
-                                            <td>Nana</td>
-                                            <td>Lulus</td>
+                                            <td><?php echo$row["nama"];?></td>
+                                            <td><?php echo$row["judul"];?></td>
+                                            <td><?php echo$row["pembimbing1"];?></td>
+                                            <td><?php echo$row["pembimbing2"];?></td>
+                                            <td><?php echo$row["status"];}}?></td>
                                         </tr>
                                     </tbody>
                                 </table>
