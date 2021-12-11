@@ -1,4 +1,17 @@
-<?php $data['page_title'] = "Proposal";$this->view("fit/headeradmin", $data);
+<?php
+if(!isset($_SESSION['user'])){
+    header('location:login');
+    session_destroy();
+}elseif ($_SESSION['user']['role']!='1') {
+    session_destroy();
+}elseif ($_SESSION['user']['role']=='3') {
+    session_destroy();
+}elseif ($_SESSION['user']['role']=='2') {
+    session_destroy();
+}else {
+
+}
+$data['page_title'] = "Proposal";$this->view("fit/headeradmin", $data);
 include('koneksi.php');
 $nama=$_SESSION['user']['nama'];
 $query = "SELECT*FROM proposal";?>

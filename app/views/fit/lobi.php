@@ -1,4 +1,17 @@
-<?php $data['page_title'] = "Lobi";
+<?php 
+if(!isset($_SESSION['user'])){
+    header('location:login');
+    session_destroy();
+}elseif ($_SESSION['user']['role']!='3') {
+    session_destroy();
+}elseif ($_SESSION['user']['role']=='1') {
+    session_destroy();
+}elseif ($_SESSION['user']['role']=='2') {
+    session_destroy();
+}else {
+
+}
+$data['page_title'] = "Lobi";
 $this->view("fit/header", $data);
 include('koneksi.php');
 $nama=$_SESSION['user']['nama'];

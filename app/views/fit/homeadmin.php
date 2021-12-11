@@ -1,12 +1,16 @@
 <?php 
-    if(!isset($_SESSION['user'])){
-        header('location:login');
-        session_destroy();
-    }elseif ($_SESSION['user']['role']!='1') {
-        session_destroy();
-    }else{
+if(!isset($_SESSION['user'])){
+    header('location:login');
+    session_destroy();
+}elseif ($_SESSION['user']['role']!='1') {
+    session_destroy();
+}elseif ($_SESSION['user']['role']=='3') {
+    session_destroy();
+}elseif ($_SESSION['user']['role']=='2') {
+    session_destroy();
+}else {
 
-    }
+}
     
 ?>
 <?php $data['page_title'] = "HomeAdmin"; $this->view("fit/headeradmin",$data);?>
