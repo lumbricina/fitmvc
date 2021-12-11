@@ -33,7 +33,7 @@ $nrp=mysqli_fetch_assoc(mysqli_query($conn,"SELECT username FROM user WHERE nama
                     <div class="row">
 
                     <!-- Area Chart -->
-                        <div class="col-xl-7 col-lg-6">
+                        <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header -->
                                 <div
@@ -65,10 +65,10 @@ $nrp=mysqli_fetch_assoc(mysqli_query($conn,"SELECT username FROM user WHERE nama
                                 </div>
                             </div>
                         </div>                        
-                    </div>
+                    
 
                         <!-- Profile -->
-                        <div class="col-xl-4 col-lg-5">
+                        <div class="col-xl-4 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -97,7 +97,7 @@ $nrp=mysqli_fetch_assoc(mysqli_query($conn,"SELECT username FROM user WHERE nama
                             </div>
                         </div>
                     </div>
-
+               
 
                 </div>
                 <!-- /.container-fluid -->
