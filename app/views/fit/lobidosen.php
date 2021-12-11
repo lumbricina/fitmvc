@@ -12,7 +12,7 @@ if(!isset($_SESSION['user'])){
 
 }
     
-    $data['page_title'] = "LobiDosen";$this->view("fit/headerdosen", $data); include("koneksi.php")?>
+    $data['page_title'] = "LobiDosen";$this->view("fit/headerdosen", $data); include("koneksi.php");?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">

@@ -13,7 +13,7 @@ if(!isset($_SESSION['user'])){
 }
     
 ?>
-<?php $data['page_title'] = "HomeDosen"; $this->view("fit/headerdosen",$data);?>
+<?php $data['page_title'] = "HomeDosen"; $this->view("fit/headerdosen",$data);include("koneksi.php");?>
 
         
 
@@ -39,16 +39,17 @@ if(!isset($_SESSION['user'])){
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="text">
-                                        <dd class="text-left">Input</dd>
+                                        <dd class="text-left">Input Tawaran Judul</dd>
                                         <div class="form-group">
                                             <div class="row-cols-1">
+                                                <form name="tawaran" action="tawarkan" method="POST">
                                                 <div class="col-12">
                                                     <h7 class="text-gray-900 mb-4">Judul</h7>                                 
-                                                        <input type="text" class="form-control form-control-user" id="text" aria-describedby="text" autocomplete="false">
+                                                        <input type="text" name="tawaranjdl" id="tawaranjdl" class="form-control form-control-user" id="text" aria-describedby="text" autocomplete="false">
                                                 </div>
                                                 <div class="col-lg-2 pt-2">
                                                     <h7 class="text-gray-900 mb-4"></h7>                                 
-                                                    <button type="submit" class="btn btn-primary" form="judul" value="Submit">Submit</button>
+                                                    <input type="submit" class="btn btn-primary" value="Submit"></input>
                                                 </div>
                                                                                           
                                             </div>
