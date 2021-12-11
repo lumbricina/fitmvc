@@ -17,7 +17,7 @@
 <?php $data['page_title'] = "Home"; $this->view("fit/header",$data); include("koneksi.php");
 $query="SELECT * FROM tawarandosen";
 $nama=$_SESSION['user']['nama'];
-$nrp="SELECT username FROM user WHERE nama='$nama'";?>
+$nrp=mysqli_fetch_assoc(mysqli_query($conn,"SELECT username FROM user WHERE nama='$nama'"));?>
 
         
 
@@ -82,7 +82,7 @@ $nrp="SELECT username FROM user WHERE nama='$nama'";?>
                                         <p><?php echo $nama;?></p></div>
                                     <h6>NRP</h6>
                                     <div class="text-left sup text-primary">
-                                        <p><?php echo $nrp;?></p></div>
+                                        <p><?php echo implode(', ', $nrp);?></p></div>
                                     <h6>Dosbing 1</h6>
                                     <div class="text-left sup text-primary">
                                         <p>Nama Dosbing 1</p></div>
