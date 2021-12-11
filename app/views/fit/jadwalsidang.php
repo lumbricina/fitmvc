@@ -29,25 +29,31 @@ $query = "SELECT jadwalsidang.mahasiswa, proposal.nama FROM jadwalsidang INNER J
                             <h6 class="m-0 font-weight-bold text-primary">Form Tambah Jadwal Sidang</h6>
                         </div>
                         <div class="card-body">
+                            <form name="jadwalsidang" action="upjadwal" method="POST">
                             <div class="form-group">
                                 <div class="row">
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Tanggal</h7>                                 
                                     <input type="date" class="form-control form-control-user"
-                                        id="date" aria-describedby="date">
+                                        name="date" id="date" aria-describedby="date">
                                 </div>
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Waktu</h7>                                 
-                                    <input type="time" class="form-control form-control-user"
+                                    <input type="time" name="time" class="form-control form-control-user"
                                         id="time" aria-describedby="time"> 
                                     </div> </div>                                            
                             <h7 class="text-gray-900 mb-4">Nama Mahasiswa</h7>
                                                                 
-                                    <input type="text" class="form-control form-control-user"
-                                    id="text" aria-describedby="text"                                        
-                                    placeholder="masukan isi" autocomplete="off">
+                            <?php 
+                                    $result = mysqli_query($conn, "SELECT * FROM pembimbing;");
+                                    
+                                    echo "<select name='mahasiswa' id='mahasiswa' class='form-control form-control-user mb-2'";
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        echo "<option value='".$row['mahasiswa'] . "'>" . $row['mahasiswa'] . "</option>";
+                                    }
+                                    echo "</select>"?>
                             </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block" form="jadwal" value="Submit">Submit</button>                                                  
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
                             </div></div>
 
                     <!-- DataTales Example -->
