@@ -58,16 +58,17 @@ $query = "SELECT*FROM proposal";?>
                                             <td><?php echo$row["pembimbing2"];?></td>
                                             <td><div style="width: 250px; height: 200px; overflow-y: auto; padding: right -100px;"><?php echo$row["ringkasan"];?></div></td>
                                             <td><?php echo$row["status"];?></td>
-                                            
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
-                                                    <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-toggle="modal" aria-haspopup="true" data-target="#poprevisi"
-                                                    aria-expanded="false" title="Revisi">
+                                                    <?php $a=0;
+                                                    echo '<button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-toggle="modal" aria-haspopup="true" data-target="#poprevisi-'.++$a.'"
+                                                    aria-expanded="false" title="Revisi">';?>
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
-                                                    <div class="modal fade" id="poprevisi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <?php echo '
+                                                    <div class="modal fade" id="poprevisi-'.$a.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';?>
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -78,11 +79,17 @@ $query = "SELECT*FROM proposal";?>
                                                                 </div>
                                                                 <div class="modal-body">Masukkan feedback / revisi</div>
                                                                 <div class="form-group px-3 pb-3">
-                                                                <input type="text" class="form-control form-control-user" id="text" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
-                                                                </div>
+                                                                    <?php
+                                                                    echo '
+                                                                    <form name="revisi" id="revisi" action="revisi" method="REQUEST">
+                                                                    <div class="px-3 pb-3"><input readonly name="mhs" id="mhs" class="form-control form-control-user" value="' .$row["nama"]. '"></input></div>
+                                                                    <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem1" id="pem1" value="'.$row["pembimbing1"].'"</input></div>
+                                                                    <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem2" id="pem2" value="'.$row["pembimbing2"].'"</input></div> ' ?>
+                                                                    <div class="px-3 pb-3"><input type="text" name="isirevisi" class="form-control form-control-user" id="isirevisi" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
+                                                                </div></div>
                                                                 <div class="modal-footer">
                                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                    <a class="btn btn-primary" href="#">Submit</a>
+                                                                    <input class="btn btn-primary" type="submit" value="Submit"></input>
                                                                 </div>
                                                             </div>
                                                         </div>
