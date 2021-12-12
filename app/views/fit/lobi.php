@@ -159,7 +159,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <input class="btn btn-danger" type="submit" value="Delete"></input>
+                            <input class="btn btn-danger" type="submit" name="delete" value="Delete"></input>
                         </div>
                     </div>
                 </div>

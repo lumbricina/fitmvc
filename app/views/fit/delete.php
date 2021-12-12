@@ -2,15 +2,15 @@
 
 include('koneksi.php');
 
-if(isset($_REQUEST['id_lobi']))
+if(isset($_REQUEST['delete']))
 {   $id_lobi = $_REQUEST['id_lobi'];
     $date = $_REQUEST['date'];
     $time = $_REQUEST['time'];
     $isi = $_REQUEST['isi'];
 
-    $lobidel="DELETE FROM lobi WHERE id_lobi = '$id_lobi'";
+    $deletelobi="DELETE FROM lobi WHERE id_lobi = '$id_lobi'";
 
-    if(mysqli_query($conn, $lobidel)){
+    if(mysqli_query($conn, $deletelobi)){
         header('location:lobi');
     }else{
         echo "eror: " . mysqli_error($conn);
