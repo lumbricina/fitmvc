@@ -86,15 +86,15 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                                 <div class="dropdown no-arrow ml-2">
                                                     <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button"
                                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
+                                                    aria-expanded="false" title="Dropdown">
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
                                                     <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" aria-haspopup="true" data-target="#popedit" aria-expanded="false" title="Edit" onclick="popUpEdit('<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" aria-haspopup="true" data-target="#popedit" aria-expanded="false" title="Edit" onclick="popUpEdit('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">Edit</a>
+                                                        <a class="dropdown-item" href="#" title="Delete">Delete</a>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-success btn-circle btn-sm ml-2" href="#"><i class="fas fa-check"></i></a>
+                                                <a class="btn btn-success btn-circle btn-sm ml-2" href="#" title="Send"><i class="fas fa-check"></i></a>
                                             </div></div>
                                             </td><?php }; ?>
                                         </tr>
@@ -119,6 +119,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                         <div class="modal-body">Edit Data Lobi</div>
                         <div class="form-group px-3 pb-3">
                             <form name="edit" id="edit" action="edit" method="POST">
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="id_lobi" id="id_lobi"></div>
                             <div class="px-3 pb-3"><input class="form-control form-control-user" name="date" id="date"></div>
                             <div class="px-3 pb-3"><input class="form-control form-control-user" name="time" id="time"></div>
                             <div class="px-3 pb-3"><input class="form-control form-control-user" name="isi" id="isi"></div>
@@ -132,7 +133,8 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
             </div>
 
             <script>
-                function popUpEdit(date, time, isi) {
+                function popUpEdit(id_lobi, date, time, isi) {
+                    document.querySelector('#popedit input[name="id_lobi"]').value = id_lobi;
                     document.querySelector('#popedit input[name="date"]').value = date;
                     document.querySelector('#popedit input[name="time"]').value = time;
                     document.querySelector('#popedit input[name="isi"]').value = isi;
