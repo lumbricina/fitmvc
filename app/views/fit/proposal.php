@@ -57,7 +57,13 @@ $query = "SELECT*FROM proposal";?>
                                             <td><?php echo$row["pembimbing1"];?></td>
                                             <td><?php echo$row["pembimbing2"];?></td>
                                             <td><div style="width: 250px; height: 200px; overflow-y: auto; padding: right -100px;"><?php echo$row["ringkasan"];?></div></td>
-                                            <td><?php echo$row["status"];?></td>
+                                            <td><?php if($row["status"]=='1'){
+                                                echo 'belum disetujui';
+                                            }elseif($row["status"]=='2'){
+                                                echo 'perlu revisi';
+                                            }elseif($row["status"]=='3'){
+                                                echo 'sudah disetujui';
+                                            }else{};?></td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
