@@ -64,7 +64,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                             <div class="table-responsive">
                            <?php $result = $conn->query($query);
                                 if ($result->num_rows > 0) { ?>
-                               <table class="table table-bordered" style="overflow-x:auto;" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" style="overflow-x:auto;" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
@@ -74,14 +74,14 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody>';
                                    <?php while($row = $result->fetch_assoc()) {
                                     echo '<tr>
                                             <td>',$row["date"],'</td>
                                             <td>',$row["time"],'</td>
                                             <td>',$row["isi"],'</td>
                                             <td>',$row["status"],'</td>
-                                            <td> ';}}?>
+                                            <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
                                                     <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button"
@@ -98,14 +98,14 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                             </div></div>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    </tbody>';}
+                                '</table>';}
+                            '</div>
                         </div>
                     </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-
-            <?php $this->view("fit/footer", $data);?>
+';
+             $this->view("fit/footer", $data);?>
