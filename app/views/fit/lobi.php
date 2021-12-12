@@ -90,7 +90,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
                                                     <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" aria-haspopup="true" data-target="#popedit" aria-expanded="false" title="Edit" onclick="popUpEdit('<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">Edit</a>
                                                         <a class="dropdown-item" href="#">Delete</a>
                                                     </div>
                                                 </div>
@@ -107,5 +107,36 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
 
             </div>
             <!-- End of Main Content -->
+            <div class="modal fade" id="popedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Edit Data Lobi</div>
+                        <div class="form-group px-3 pb-3">
+                            <form name="edit" id="edit" action="edit" method="POST">
+                            <div class="px-3 pb-3"><input class="form-control form-control-user" name="date" id="date"></div>
+                            <div class="px-3 pb-3"><input class="form-control form-control-user" name="time" id="time"></div>
+                            <div class="px-3 pb-3"><input class="form-control form-control-user" name="isi" id="isi"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <input class="btn btn-primary" type="submit" value="Submit"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function popUpEdit(date, time, isi) {
+                    document.querySelector('#popedit input[name="date"]').value = date;
+                    document.querySelector('#popedit input[name="time"]').value = time;
+                    document.querySelector('#popedit input[name="isi"]').value = isi;
+                }
+            </script>
 
             <?php  $this->view("fit/footer", $data);?>
