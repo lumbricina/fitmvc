@@ -103,6 +103,8 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
 
             </div>
             <!-- End of Main Content -->
+
+            <!-- Modal Edit -->
             <div class="modal fade" id="popedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -137,7 +139,8 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                 }
             </script>
 
-<div class="modal fade" id="popdel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal Delete -->
+            <div class="modal fade" id="popdel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
