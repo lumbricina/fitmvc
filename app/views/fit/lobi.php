@@ -87,9 +87,11 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                                     data-toggle="modal" aria-haspopup="true" data-target="#popedit" aria-expanded="false" title="Edit" onclick="popUpEdit('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
                                                     <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button class="btn btn-danger btn-circle btn-sm ml-2" data-toggle="modal" data-target="#popdel" title="Delete" onclick="popUpdel('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
-                                                    <i class="fas fa-trash"></i></button>
-                                            </div></div>
+                                                    <button class="btn btn-danger btn-circle btn-sm ml-2" type="button"
+                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUpdel('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
+                                                    <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
                                             </td><?php }; ?>
                                         </tr>
                                     </tbody>
