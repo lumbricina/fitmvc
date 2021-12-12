@@ -61,39 +61,9 @@ $query = "SELECT*FROM proposal";?>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
-                                                    <?php $a=0;
-                                                    echo '<button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-toggle="modal" aria-haspopup="true" data-target="#poprevisi-'.++$a.'"
-                                                    aria-expanded="false" title="Revisi">';?>
+                                                    <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="modal" aria-haspopup="true" data-target="#poprevisi" aria-expanded="false" title="Revisi" onclick="popUpRevisi('<?= $row['nama']; ?>', '<?= $row['pembimbing1']; ?>', '<?= $row['pembimbing2']; ?>')">
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
-                                                    <?php echo '
-                                                    <div class="modal fade" id="poprevisi-'.$a.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';?>
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Revisi</h5>
-                                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">×</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">Masukkan feedback / revisi</div>
-                                                                <div class="form-group px-3 pb-3">
-                                                                    <?php
-                                                                    echo '
-                                                                    <form name="revisi" id="revisi" action="revisi" method="REQUEST">
-                                                                    <div class="px-3 pb-3"><input readonly name="mhs" id="mhs" class="form-control form-control-user" value="' .$row["nama"]. '"></input></div>
-                                                                    <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem1" id="pem1" value="'.$row["pembimbing1"].'"</input></div>
-                                                                    <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem2" id="pem2" value="'.$row["pembimbing2"].'"</input></div> ' ?>
-                                                                    <div class="px-3 pb-3"><input type="text" name="isirevisi" class="form-control form-control-user" id="isirevisi" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
-                                                                </div></div>
-                                                                <div class="modal-footer">
-                                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                    <input class="btn btn-primary" type="submit" value="Submit"></input>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <a class="btn btn-success btn-circle btn-sm ml-2" href="#" title="Setujui"><i class="fas fa-check"></i></a>
                                             </div></div>
@@ -110,5 +80,37 @@ $query = "SELECT*FROM proposal";?>
 
             </div>
             <!-- End of Main Content -->
+            <div class="modal fade" id="poprevisi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Revisi</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Masukkan feedback / revisi</div>
+                        <div class="form-group px-3 pb-3">
+                            <form name="revisi" id="revisi" action="revisi" method="POST">
+                            <div class="px-3 pb-3"><input readonly name="mhs" id="mhs" class="form-control form-control-user" /></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem1" id="pem1" /></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem2" id="pem2" /></div>
+                            <div class="px-3 pb-3"><input type="text" name="isirevisi" class="form-control form-control-user" id="isirevisi" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
+                        </div></div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <input class="btn btn-primary" type="submit" value="Submit"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function popUpRevisi(nama, dospem1, dospem2) {
+                    document.querySelector('#poprevisi input[name="mhs"]').value = nama;
+                    document.querySelector('#poprevisi input[name="pem1"]').value = dospem1;
+                    document.querySelector('#poprevisi input[name="pem2"]').value = dospem2;
+                }
+            </script>
 
             <?php $this->view("fit/footer", $data);?>
