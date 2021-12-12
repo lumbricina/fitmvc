@@ -1,17 +1,15 @@
 <?php
 
 include('koneksi.php');
-
-    if(isset($_POST['isi']))
-        {
-            $mahasiswa = $_SESSION['user']['nama'];
+            $nama=$_SESSION['user']['nama'];
+            $id = $_POST['id_lobi'];
             $date = $_POST['date'];
             $time = $_POST['time'];
             $isi = $_POST['isi'];
-            $updatelobi="UPDATE lobi (id_lobi, nama, date, time, isi) VALUES (NULL, '$mahasiswa', '$date', '$time', '$isi')";
+            $updatelobi="UPDATE lobi SET (date, time, isi) VALUES ('$date', '$time', '$isi') WHERE id='$id'";
             #header('location:lobi');
 
-            if(mysqli_query($conn, $inlobi)){
+            if(mysqli_query($conn, $updatelobi)){
                 header('location:lobi');
             }else{
                 echo "error: " .mysqli_error($conn);
