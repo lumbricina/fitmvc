@@ -1,6 +1,6 @@
 <?php
 
-Class InLobi extends Controller
+Class edit extends Controller
 {
     function index()
     {
