@@ -8,7 +8,7 @@ if(isset($_REQUEST['id_lobi']))
     $time = $_REQUEST['time'];
     $isi = $_REQUEST['isi'];
 
-    $lobidel="DELETE FROM `lobi` WHERE `lobi`.`id_lobi` = $id_lobi";
+    $lobidel="DELETE FROM lobi WHERE id_lobi = '$id_lobi'";
 
     if(mysqli_query($conn, $lobidel)){
         header('location:lobi');
