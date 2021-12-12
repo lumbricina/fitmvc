@@ -71,7 +71,7 @@ $query = "SELECT*FROM proposal";?>
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
                                                 </div>
-                                                <a class="btn btn-success btn-circle btn-sm ml-2" href="#" title="Setujui"><i class="fas fa-check"></i></a>
+                                                <input id="setujui" type="button" name="setujui" onclick="setujui('<?= $row['nama']; ?>', '<?= $row['pembimbing1']; ?>', '<?= $row['pembimbing2']; ?>')" value="setujui" data-target="#setujui" class="btn btn-success btn-circle btn-sm ml-2" title="Setujui" action="setujuprop" method="POST"><i class="fas fa-check"></i></input>
                                             </div></div>
                                             </td>
                                             <td><?php echo$row["revisi"];}}?></td>
@@ -112,10 +112,17 @@ $query = "SELECT*FROM proposal";?>
             </div>
 
             <script>
-                function popUpRevisi(nama, dospem1, dospem2) {
+                function popUpRevisi(nama, pem1, pem2) {
                     document.querySelector('#poprevisi input[name="mhs"]').value = nama;
-                    document.querySelector('#poprevisi input[name="pem1"]').value = dospem1;
-                    document.querySelector('#poprevisi input[name="pem2"]').value = dospem2;
+                    document.querySelector('#poprevisi input[name="pem1"]').value = pem1;
+                    document.querySelector('#poprevisi input[name="pem2"]').value = pem2;
+                }
+
+                function setujui(nama, pem1, pem2){
+                    document.querySelector('#setujui input[name="mhs"]').value = nama;
+                    document.querySelector('#setujui input[name="pem1"]').value = pem1;
+                    document.querySelector('#setujui input[name="pem2"]').value = pem2;
+
                 }
             </script>
 

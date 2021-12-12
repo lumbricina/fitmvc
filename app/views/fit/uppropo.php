@@ -13,7 +13,7 @@ if(isset($_POST['pem1']))
     $timezone  = +7; //WIB
     $time = gmdate('H:i:s', time() + 3600*($timezone+date("I")));
 
-    $prop="INSERT INTO proposal (id, date, time, nama, pembimbing1, pembimbing2, judul, ringkasan) VALUES (NULL, '$date', '$time', '$mahasiswa','$pem1','$pem2','$judul','$ringkasan')";
+    $prop="INSERT INTO proposal (id, date, time, nama, pembimbing1, pembimbing2, judul, ringkasan, status) VALUES (NULL, '$date', '$time', '$mahasiswa','$pem1','$pem2','$judul','$ringkasan','1')";
 
     if(mysqli_query($conn, $prop)){
         header('location:pengajuan');
