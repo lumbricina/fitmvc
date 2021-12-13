@@ -2,7 +2,7 @@
 
 include('koneksi.php');
 
-if(isset($_REQUEST['delete']))
+if(isset($_REQUEST['btn_delete']))
 {   $id_lobi = $_REQUEST['id_lobi'];
     $date = $_REQUEST['date'];
     $time = $_REQUEST['time'];

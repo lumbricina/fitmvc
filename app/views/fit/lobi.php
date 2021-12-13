@@ -88,7 +88,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                                     <i class="fas fa-edit"></i>
                                                     </button>
                                                     <button class="btn btn-danger btn-circle btn-sm ml-2" type="button"
-                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete">
+                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUpdel('<?= $id_lobi=$row['id_lobi'];?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
                                                     <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
@@ -139,5 +139,39 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                 }
             </script>
 
+            <!-- Modal Delete -->
+            <div class="modal fade" id="popdel" tabindex="-1" role="dialog" aria-labelledby="deletemodal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deletelabel">Delete</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Sure you want to delete this data?</div>
+                        <div class="form-group px-3 pb-3">
+                            <form name="delete" id="delete" action="delete" method="POST">
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="id_lobi" id="id_lobi"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="date" id="date"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="time" id="time"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="isi" id="isi"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a type="button" class="btn btn-danger" name="btn_delete" href="delete.php?id=<?= $id_lobi?>">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function popUpdel(id_lobi, date, time, isi) {
+                    document.querySelector('#popdel input[name="id_lobi"]').value = id_lobi;
+                    document.querySelector('#popdel input[name="date"]').value = date;
+                    document.querySelector('#popdel input[name="time"]').value = time;
+                    document.querySelector('#popdel input[name="isi"]').value = isi;
+                }
+            </script>
 
             <?php  $this->view("fit/footer", $data);?>
