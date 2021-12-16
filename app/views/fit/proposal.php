@@ -14,7 +14,7 @@ if(!isset($_SESSION['user'])){
 $data['page_title'] = "Proposal";$this->view("fit/headeradmin", $data);
 include('koneksi.php');
 $nama=$_SESSION['user']['nama'];
-$query = "SELECT*FROM proposal";?>
+$query = "SELECT * FROM proposal";?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -71,7 +71,11 @@ $query = "SELECT*FROM proposal";?>
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
                                                 </div>
-                                                <input id="setujui" type="button" name="setujui" onclick="setujui('<?= $row['nama']; ?>', '<?= $row['pembimbing1']; ?>', '<?= $row['pembimbing2']; ?>')" value="setujui" data-target="#setujui" class="btn btn-success btn-circle btn-sm ml-2" title="Setujui" action="setujuprop" method="POST"><i class="fas fa-check"></i></input>
+                                                <a href="setujui?nama=<?php echo $row['nama']; ?>&pembimbing1=<?php echo $row['pembimbing1']; ?>&pembimbing2=<?php echo $row['pembimbing2']; ?>&judul=<?php echo $row['judul']; ?>" class="btn btn-success btn-circle btn-sm ml-2" id="setujui" name="setujui"><i class="fas fa-check"> </i></a>
+                                                <!--<i class="fas fa-check"> </i>
+                                                    <form action="setujui" method="REQUEST" id="setujui" name="setujui">
+                                                    <input class="btn btn-success btn-circle btn-sm ml-2" type="submit" name="setuju" id="setuju" title="Setujui" value="" data-target="#setuju" onclick="popSetuju('<?= $row['nama']; ?>', '<?= $row['pembimbing1']; ?>', '<?= $row['pembimbing2']; ?>')">
+                                                    </form></input>-->
                                             </div></div>
                                             </td>
                                             <td><?php echo$row["revisi"];}}?></td>
@@ -118,12 +122,10 @@ $query = "SELECT*FROM proposal";?>
                     document.querySelector('#poprevisi input[name="pem2"]').value = pem2;
                 }
 
-                function setujui(nama, pem1, pem2){
-                    document.querySelector('#setujui input[name="mhs"]').value = nama;
-                    document.querySelector('#setujui input[name="pem1"]').value = pem1;
-                    document.querySelector('#setujui input[name="pem2"]').value = pem2;
 
-                }
+                
             </script>
+
+           
 
             <?php $this->view("fit/footer", $data);?>

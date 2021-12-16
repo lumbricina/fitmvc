@@ -10,5 +10,5 @@ Class Proposal extends Controller
         
     }
 
-    
+
 }
