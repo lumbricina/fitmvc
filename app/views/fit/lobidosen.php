@@ -13,7 +13,7 @@ if(!isset($_SESSION['user'])){
 }
     
     $data['page_title'] = "LobiDosen";$this->view("fit/headerdosen", $data); include("koneksi.php");
-    $query = "SELECT pembimbing.mahasiswa lobi.date lobi.time lobi.isi lobi.status FROM pembimbing INNER JOIN lobi WHERE pembimbing.mahasiswa=lobi.nama";
+    $query = "SELECT pembimbing.mahasiswa, lobi.date, lobi.time, lobi.isi, lobi.status FROM pembimbing RIGHT JOIN lobi WHERE pembimbing.mahasiswa=lobi.nama";
     ?>
 
                 <!-- Begin Page Content -->
@@ -73,13 +73,14 @@ if(!isset($_SESSION['user'])){
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <?php while($row = $result->mysql_fetch_assoc()) { ?>
+                                        <?php while($row = $result->mysql_fetch_array()) { ?>
                                         <tr>
-                                            <td><?php echo$row["pembimbing.mahasiswa"];?></td>  
-                                            <td><?php echo$row["lobi.date"];?></td>
-                                            <td><?php echo$row["lobi.time"];?></td>
-                                            <td><?php echo$row["lobi.isi"];?></td>
-                                            <td><?php echo$row["lobi.status"];?></td>
+                                            <td><?php echo$row["mahasiswa"];?></td>  
+                                            <td><?php echo$row["date"];?></td>
+                                            <td><?php echo$row["time"];?></td>
+                                            <td><?php echo$row["isi"];?></td>
+                                            <td><?php echo$row["status"];?></td>
+                                            <td><?php echo$row["revisi"];?></td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
