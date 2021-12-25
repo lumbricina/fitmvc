@@ -14,7 +14,9 @@ if(!isset($_SESSION['user'])){
     
 ?>
 <?php $data['page_title'] = "HomeDosen"; $this->view("fit/headerdosen",$data);include("koneksi.php");
-$query="SELECT * FROM tawarandosen";
+$tawar="SELECT * FROM tawarandosen";
+$nama=$_SESSION['user']['nama'];
+$mahasiswa="SELECT * FROM pembimbing WHERE pembimbing1='$nama'";
 ?>
 
         
@@ -66,7 +68,7 @@ $query="SELECT * FROM tawarandosen";
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $result = $conn->query($query);
+                                            $result = $conn->query($tawar);
                                             if ($result->num_rows > 0) {
                                                 while($row = $result->fetch_assoc()) {
                                         ?>
@@ -96,12 +98,15 @@ $query="SELECT * FROM tawarandosen";
                                 <div class="card-body">
                                     <h6>Nama</h6>
                                     <div class="text-left sup text-primary">
-                                        <p>Nama Dosen</p></div>
+                                        <p><?php echo$nama;?></p></div>
                                     <h6>Mahasiswa Bimbingan</h6>
                                     <div class="text-left sup text-primary">
-                                        <li>Nama Mahasiswa</li>
-                                        <li>Nama Mahasiswa</li>
-                                        <li>Nama Mahasiswa</li>
+                                    <?php
+                                            $result = $conn->query($mahasiswa);
+                                            if (!empty($result) && $result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <li><?php echo$row["mahasiswa"];}}?></li>
                                     </div>
                                 </div>
                             </div>
