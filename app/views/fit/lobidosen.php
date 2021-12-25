@@ -12,7 +12,9 @@ if(!isset($_SESSION['user'])){
 
 }
     
-    $data['page_title'] = "LobiDosen";$this->view("fit/headerdosen", $data); include("koneksi.php");?>
+    $data['page_title'] = "LobiDosen";$this->view("fit/headerdosen", $data); include("koneksi.php");
+    $query = "SELECT pembimbing.mahasiswa lobi.date lobi.time lobi.isi lobi.status FROM pembimbing INNER JOIN lobi WHERE pembimbing.mahasiswa=lobi.nama";
+    ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -56,6 +58,7 @@ if(!isset($_SESSION['user'])){
                         </div>
                         <div class="card-body">
                             <div class="table-responsive" style="overflow-x:auto;">
+                            <?php $result = $conn->query($query);?>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -70,12 +73,13 @@ if(!isset($_SESSION['user'])){
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Milenia Ulwan Zafira</td>
-                                            <td>01/01/2022</td>
-                                            <td>15:00 WIB</td>
-                                            <td>Buat proposal TA</td>
-                                            <td>acc/tolak</td>
-                                            <td>isi repisi</td>
+                                        <?php while($row = $result->mysql_fetch_assoc()) { ?>
+                                        <tr>
+                                            <td><?php echo$row["pembimbing.mahasiswa"];?></td>  
+                                            <td><?php echo$row["lobi.date"];?></td>
+                                            <td><?php echo$row["lobi.time"];?></td>
+                                            <td><?php echo$row["lobi.isi"];?></td>
+                                            <td><?php echo$row["lobi.status"];?></td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -110,7 +114,7 @@ if(!isset($_SESSION['user'])){
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table><?php };?>
                             </div>
                         </div>
                     </div>
