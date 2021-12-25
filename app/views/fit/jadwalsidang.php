@@ -14,7 +14,7 @@ if(!isset($_SESSION['user'])){
 $data['page_title'] = "JadwalSidang";$this->view("fit/headeradmin", $data);
 include("koneksi.php");
 #$nama=mysqli_fetch_assoc(mysqli_query("SELECT * FROM pembimbing"));
-$result = mysqli_query($conn, "SELECT jadwalsidang.tanggal, jadwalsidang.waktu, jadwalsidang.mahasiswa, proposal.judul, proposal.pembimbing1, proposal.pembimbing2 FROM proposal, jadwalsidang ON proposal.nama=jadwalsidang.mahasiswa");
+$result = mysqli_query($conn, "SELECT * FROM jadwalview");
 ?>
 
                 <!-- Begin Page Content -->
@@ -77,17 +77,15 @@ $result = mysqli_query($conn, "SELECT jadwalsidang.tanggal, jadwalsidang.waktu, 
                                     </thead>
                                     <tbody>
                                     <?php
-                                            #$result = $conn->query($query);
-                                            #if ($result->num_rows > 0) {
-                                                while($row = $result->mysqli_fetch_alias_array()) {
+                                           while($row = $result->fetch_assoc()) {
                                         ?>
                                         <tr>
                                             <td><?php echo$row["tanggal"];?></td>
                                             <td><?php echo$row["waktu"];?></td>
                                             <td><?php echo$row["mahasiswa"];?></td>
-                                            <td><?php echo$row["proposal.judul"];?></td>
-                                            <td><?php echo$row["proposal.pembimbing1"];?></td>
-                                            <td><?php echo$row["proposal.pembimbing2"];}?></td>
+                                            <td><?php echo$row["judul"];?></td>
+                                            <td><?php echo$row["pembimbing1"];?></td>
+                                            <td><?php echo$row["pembimbing2"];?></td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -102,7 +100,7 @@ $result = mysqli_query($conn, "SELECT jadwalsidang.tanggal, jadwalsidang.waktu, 
                                                     </div>
                                                 </div>
                                             </div></div>
-                                            </td>
+                                            </td> <?php } ; ?>
                                         </tr>
                                     </tbody>
                                 </table>
