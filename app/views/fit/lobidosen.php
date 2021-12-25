@@ -23,35 +23,6 @@ if(!isset($_SESSION['user'])){
                     <h1 class="h3 mb-2 text-gray-800">Log Book Mahasiswa</h1>
                     <p class="mb-4">Pembimbing 1 harap melakukan persetujuan (acc) lobi mahasiswa </p>
 
-                    <!-- Form Lobi -->
-<!--                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Form Lobi</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <div class="row">
-                                <div class="col-lg-4">
-                            <h7 class="text-gray-900 mb-4">Tanggal</h7>                                 
-                                    <input type="date" class="form-control form-control-user"
-                                        id="date" aria-describedby="date">
-                                </div>
-                                <div class="col-lg-4">
-                            <h7 class="text-gray-900 mb-4">Waktu</h7>                                 
-                                    <input type="time" class="form-control form-control-user"
-                                        id="time" aria-describedby="time"> 
-                                    </div> </div>                                            
-                            <h7 class="text-gray-900 mb-4">Isi</h7>
-                                                                
-                                    <input type="text" class="form-control form-control-user"
-                                    id="text" aria-describedby="text"                                        
-                                    placeholder="masukan isi" autocomplete="off">
-                            </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block" form="lobi" value="Submit">Submit</button>                                                  
-                            </div></div>
--->
-                    <!-- DataTales Example -->
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Tabel Logging</h6>
