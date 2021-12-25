@@ -51,7 +51,13 @@ if(!isset($_SESSION['user'])){
                                             <td><?php echo$row["date"];?></td>
                                             <td><?php echo$row["time"];?></td>
                                             <td><?php echo$row["isi"];?></td>
-                                            <td><?php echo$row["status"];?></td>
+                                            <td><?php if($row["status"]=='1'){
+                                                echo 'belum disetujui';
+                                            }elseif($row["status"]=='2'){
+                                                echo 'perlu revisi';
+                                            }elseif($row["status"]=='3'){
+                                                echo 'sudah disetujui';
+                                            }else{};?></td>
                                             <td><?php echo$row["revisi"];?></td>
                                             <td>
                                                 <div class="row">
