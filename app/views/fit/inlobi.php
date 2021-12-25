@@ -8,7 +8,7 @@ include('koneksi.php');
             $date = $_POST['date'];
             $time = $_POST['time'];
             $isi = $_POST['isi'];
-            $inlobi="INSERT INTO lobi (id_lobi, nama, date, time, isi) VALUES (NULL, '$mahasiswa', '$date', '$time', '$isi')";
+            $inlobi="INSERT INTO lobi (id_lobi, nama, date, time, isi, status) VALUES (NULL, '$mahasiswa', '$date', '$time', '$isi', '1')";
             #header('location:lobi');
 
             if(mysqli_query($conn, $inlobi)){
