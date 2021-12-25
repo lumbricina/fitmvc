@@ -83,12 +83,9 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                             <td><?php echo$row["status"];?></td>
                                             <td>
                                                 <div class="row">
-                                                    <button class="btn btn-success btn-circle btn-sm ml-2" type="button"
-                                                    data-toggle="modal" aria-haspopup="true" data-target="#popedit" aria-expanded="false" title="Edit" onclick="popUpEdit('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
-                                                    <i class="fas fa-edit"></i>
-                                                    </button>
+                                                <a href="edit?id_lobi=<?php echo $row['id_lobi']; ?>&date=<?php echo $row['date']; ?>&time=<?php echo $row['time']; ?>&isi=<?php echo $row['isi']; ?>" class="btn btn-success btn-circle btn-sm ml-2" id="edit" name="edit"><i class="fas fa-edit"> </i></a>
                                                     <button class="btn btn-danger btn-circle btn-sm ml-2" type="button"
-                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete">
+                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUp('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
                                                     <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
@@ -105,22 +102,22 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
             <!-- End of Main Content -->
 
             <!-- Modal Edit -->
-            <div class="modal fade" id="popedit" tabindex="-1" role="dialog" aria-labelledby="editmodal" aria-hidden="true">
+            <div class="modal fade" id="popdel" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editlabel">Edit</h5>
+                            <h5 class="modal-title" id="label">Edit</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body">Edit Data Lobi</div>
+                        <div class="modal-body">Delete Data Lobi</div>
                         <div class="form-group px-3 pb-3">
-                            <form name="edit" id="edit" action="edit" method="POST">
+                            <form name="delete" id="delete" action="delete" method="POST">
                             <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="id_lobi" id="id_lobi"></div>
-                            <div class="px-3 pb-3"><input class="form-control form-control-user" type="date" name="date" id="date"></div>
-                            <div class="px-3 pb-3"><input class="form-control form-control-user" type="time" name="time" id="time"></div>
-                            <div class="px-3 pb-3"><input class="form-control form-control-user" name="isi" id="isi"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="date" name="date" id="date"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="time" name="time" id="time"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="isi" id="isi"></div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -131,11 +128,11 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
             </div>
 
             <script>
-                function popUpEdit(id_lobi, date, time, isi) {
-                    document.querySelector('#popedit input[name="id_lobi"]').value = id_lobi;
-                    document.querySelector('#popedit input[name="date"]').value = date;
-                    document.querySelector('#popedit input[name="time"]').value = time;
-                    document.querySelector('#popedit input[name="isi"]').value = isi;
+                function popUp(id_lobi, date, time, isi) {
+                    document.querySelector('#popdel input[name="id_lobi"]').value = id_lobi;
+                    document.querySelector('#popdel input[name="date"]').value = date;
+                    document.querySelector('#popdel input[name="time"]').value = time;
+                    document.querySelector('#popdel input[name="isi"]').value = isi;
                 }
             </script>
 
