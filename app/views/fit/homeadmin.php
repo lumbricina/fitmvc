@@ -13,10 +13,13 @@ if(!isset($_SESSION['user'])){
 }
     
 ?>
-<?php $data['page_title'] = "HomeAdmin"; $this->view("fit/headeradmin",$data);?>
+<?php $data['page_title'] = "HomeAdmin"; $this->view("fit/headeradmin",$data);include("koneksi.php");
+$tawar="SELECT * FROM tawarandosen";
+$sidang="SELECT * FROM jadwalsidang";?>
 
         
 
+ 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -29,7 +32,7 @@ if(!isset($_SESSION['user'])){
                     <div class="row">
 
                     <!-- Area Chart -->
-                        <div class="col-xl-6 col-lg-7">
+                        <div class="col-xl-6 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header -->
                                 <div
@@ -39,15 +42,45 @@ if(!isset($_SESSION['user'])){
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="text">
-                                        <dd class="text-left">Tawaran Judul</dd>
-                                        <div class="text-left small text-primary">
-                                        <p>Nama Dosen</p>
-                                    </div>
+                                        <dd class="text-left">Input Tawaran Judul</dd>
+                                        <div class="form-group">
+                                            <div class="row-cols-1">
+                                                <form name="tawaran" action="tawarkan" method="POST">
+                                                <div class="col-12">
+                                                    <h7 class="text-gray-900 mb-4">Judul</h7>                                 
+                                                        <input type="text" name="tawaranjdl" id="tawaranjdl" class="form-control form-control-user" id="text" aria-describedby="text" autocomplete="false">
+                                                </div>
+                                                <div class="col-lg-2 pt-2">
+                                                    <h7 class="text-gray-900 mb-4"></h7>                                 
+                                                    <input type="submit" class="btn btn-primary" value="Submit"></input>
+                                                </div>
+                                                                                          
+                                            </div>
+                                        </div>
+                                <div class="text">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Judul</th>
+                                            <th>Dosen</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $result = $conn->query($tawar);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo$row["penawaran"];?></td>
+                                            <td><?php echo$row["dosen"];}}?></td>
+                                        </tr>                                        
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
                         </div>                        
-                    </div>
-                    
+                    </div></div>                   
 
                         <!-- Profile -->
                         
@@ -72,10 +105,15 @@ if(!isset($_SESSION['user'])){
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                            $result = $conn->query($sidang);
+                                            if (!empty($result) && $result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
                                         <tr>
-                                            <td>Lala</td>
-                                            <td>Nina</td>
-                                            <td>Aplikasi something</td>
+                                            <td><?php echo$row["tanggal"];?></td>
+                                            <td><?php echo$row["waktu"];?></td>
+                                            <td><?php echo$row["mahasiswa"];}}?> </td>
                                         
                                             </tr>
                                     </tbody>
