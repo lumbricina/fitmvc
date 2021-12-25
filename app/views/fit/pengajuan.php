@@ -93,7 +93,13 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                             <td><?php echo$row["pembimbing1"];?></td>
                                             <td><?php echo$row["pembimbing2"];?></td>
                                             <td><?php echo$row["judul"];?></td>
-                                            <td><?php echo$row["status"];?></td>
+                                            <td><?php if($row["status"]=='1'){
+                                                echo 'belum disetujui';
+                                            }elseif($row["status"]=='2'){
+                                                echo 'perlu revisi';
+                                            }elseif($row["status"]=='3'){
+                                                echo 'sudah disetujui';
+                                            }else{};?></td>
                                             <td><?php echo$row["revisi"];}}?></td>
                                         </tr>                                        
                                     </tbody>
