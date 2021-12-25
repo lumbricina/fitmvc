@@ -13,7 +13,8 @@ if(!isset($_SESSION['user'])){
 }
     
     $data['page_title'] = "LobiDosen";$this->view("fit/headerdosen", $data); include("koneksi.php");
-    $query = "SELECT pembimbing.mahasiswa, lobi.date, lobi.time, lobi.isi, lobi.status FROM pembimbing RIGHT JOIN lobi WHERE pembimbing.mahasiswa=lobi.nama";
+    $user=$_SESSION['user']['nama'];
+    $query = "SELECT lobi.* FROM lobi INNER JOIN pembimbing ON lobi.nama=pembimbing.mahasiswa WHERE pembimbing.pembimbing1='$user'";
     ?>
 
                 <!-- Begin Page Content -->
@@ -44,9 +45,9 @@ if(!isset($_SESSION['user'])){
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <?php while($row = $result->mysql_fetch_array()) { ?>
+                                        <?php while($row = $result->fetch_assoc()) { ?>
                                         <tr>
-                                            <td><?php echo$row["mahasiswa"];?></td>  
+                                            <td><?php echo$row["nama"];?></td>  
                                             <td><?php echo$row["date"];?></td>
                                             <td><?php echo$row["time"];?></td>
                                             <td><?php echo$row["isi"];?></td>
@@ -83,10 +84,10 @@ if(!isset($_SESSION['user'])){
                                                 </div>
                                                 <a class="btn btn-success btn-circle btn-sm ml-2" href="#" title="Setujui"><i class="fas fa-check"></i></a>
                                             </div></div>
-                                            </td>
+                                            </td><?php };?>
                                         </tr>
                                     </tbody>
-                                </table><?php };?>
+                                </table>
                             </div>
                         </div>
                     </div>
