@@ -95,7 +95,7 @@ $judul=mysqli_fetch_assoc(mysqli_query($conn,"SELECT judul FROM proposal WHERE n
                                         ?>
                                     <h6>Judul</h6>
                                     <div class="text-left sup text-primary">
-                                        <p> <?php echo $judul;?></p></div>
+                                        <p> <?php echo implode(', ', $judul);?></p></div>
                                     <h6>Dosbing 1</h6>
                                     <div class="text-left sup text-primary">
                                     <p><?php echo$row["pembimbing1"];?></p></div>

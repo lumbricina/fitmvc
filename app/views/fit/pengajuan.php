@@ -36,7 +36,7 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                 <?php 
                                     $result = mysqli_query($conn, "SELECT * FROM user WHERE role='2';");
                                     
-                                    echo "<select name='pem1' id='pem1' class='form-control form-control-user mb-2'";
+                                    echo "<select name='pem1' id='pem1' class='form-control form-control-user mb-2'>";
                                     while ($row = mysqli_fetch_array($result)) {
                                         echo "<option value='".$row['nama'] . "'>" . $row['nama'] . "</option>";
                                     }

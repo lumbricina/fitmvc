@@ -48,14 +48,14 @@ $result = mysqli_query($conn, $query);
                             <?php 
                                     $res = mysqli_query($conn, "SELECT * FROM pembimbing;");
                                     
-                                    echo "<select name='mahasiswa' id='mahasiswa' class='form-control form-control-user mb-2'";
+                                    echo "<select name='mahasiswa' id='mahasiswa' class='form-control form-control-user mb-2'>";
                                     while ($row = mysqli_fetch_array($res)) {
                                         echo "<option value='".$row['mahasiswa'] . "'>" . $row['mahasiswa'] . "</option>";
                                     }
                                     echo "</select>"?>
                             </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
-                            </div></div></div>
+                            </div></div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
