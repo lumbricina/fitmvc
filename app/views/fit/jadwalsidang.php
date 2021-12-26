@@ -42,7 +42,8 @@ $result = mysqli_query($conn, $query);
                             <h7 class="text-gray-900 mb-4">Waktu</h7>                                 
                                     <input type="time" name="time" class="form-control form-control-user"
                                         id="time" aria-describedby="time"> 
-                                    </div> </div>                                            
+                                    </div> 
+                                </div>                                            
                             <h7 class="text-gray-900 mb-4">Nama Mahasiswa</h7>
                                                         
                             <?php 
@@ -55,7 +56,8 @@ $result = mysqli_query($conn, $query);
                                     echo "</select>"?>
                             </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
-                            </div></div>
+                            </div>
+                        </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -89,56 +91,19 @@ $result = mysqli_query($conn, $query);
                                             <td><?php echo$row["pembimbing2"];?></td>
                                             <td>
                                                 <div class="row">
-                                                    <button class="btn btn-danger btn-circle btn-sm ml-2" type="button"
-                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUp('<?= $row['id']; ?>','<?= $row['tanggal']; ?>', '<?= $row['waktu']; ?>', '<?= $row['mahasiswa']; ?>')">
-                                                    <i class="fas fa-trash"></i>
+                                                <a href="delsidang?id=<?php echo $row['id']; ?>&date=<?php echo $row['tanggal']; ?>&time=<?php echo $row['waktu']; ?>&mahasiswa=<?php echo $row['mahasiswa']; ?>" class="btn btn-danger btn-circle btn-sm ml-2" id="delete" name="delete"><i class="fas fa-trash"> </i></a>
                                                     </button>
-                                            </div></div>
+                                                </div>
+                                            </div>
                                             </td> <?php } ; ?>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-           
-            <!-- Modal Edit -->
-            <div class="modal fade" id="popdel" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="label">Edit</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Delete Data Sidang</div>
-                        <div class="form-group px-3 pb-3">
-                            <form name="delete" id="delete" action="delete" method="POST">
-                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="id" id="id"></div>
-                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="date" name="tanggal" id="tanggal"></div>
-                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="time" name="waktu" id="waktu"></div>
-                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="mahasiswa" id="mahasiswa"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <input class="btn btn-primary" type="submit" value="Delete"></input>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                function popUp(id, tanggal, waktu, mahasiswa) {
-                    document.querySelector('#popdel input[name="id"]').value = id;
-                    document.querySelector('#popdel input[name="tanggal"]').value = tanggal;
-                    document.querySelector('#popdel input[name="waktu"]').value = waktu;
-                    document.querySelector('#popdel input[name="mahasiswa"]').value = mahasiswa;
-                }
-            </script>
 
             <?php $this->view("fit/footer", $data);?>
