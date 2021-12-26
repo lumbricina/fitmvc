@@ -40,8 +40,8 @@ $query = "SELECT * FROM proposal";?>
                                             <th>Pembimbing 2</th>
                                             <th>Ringkasan</th>
                                             <th>Status</th>
-                                            <th>Action</th>
                                             <th>Revisi</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,6 +64,7 @@ $query = "SELECT * FROM proposal";?>
                                             }elseif($row["status"]=='3'){
                                                 echo 'sudah disetujui';
                                             }else{};?></td>
+                                            <td><?php echo$row["revisi"];?></td>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -78,9 +79,8 @@ $query = "SELECT * FROM proposal";?>
                                                     </form></input>-->
                                             </div></div>
                                             </td>
-                                            <td><?php echo$row["revisi"];}}?></td>
                                         </tr>
-                                    </tbody>
+                                    </tbody><?php }};?>
                                 </table>
                             </div>
                         </div>
