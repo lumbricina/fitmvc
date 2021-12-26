@@ -76,11 +76,11 @@
             </div> -->
 
             <!-- Nav Item - Repo -->
-            <!-- <li class="nav-item">
+             <li class="nav-item">
                 <a class="nav-link" href="repo">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Repository</span></a>
-            </li> -->  
+            </li> 
 
                         <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
