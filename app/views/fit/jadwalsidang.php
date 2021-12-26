@@ -36,12 +36,12 @@ $result = mysqli_query($conn, $query);
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Tanggal</h7>                                 
                                     <input type="date" class="form-control form-control-user"
-                                        name="date" id="date" aria-describedby="date" required>
+                                        name="date" id="date" aria-describedby="date">
                                 </div>
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Waktu</h7>                                 
                                     <input type="time" name="time" class="form-control form-control-user"
-                                        id="time" aria-describedby="time" required> 
+                                        id="time" aria-describedby="time"> 
                                     </div> </div>                                            
                             <h7 class="text-gray-900 mb-4">Nama Mahasiswa</h7>
                                                         
@@ -89,17 +89,10 @@ $result = mysqli_query($conn, $query);
                                             <td><?php echo$row["pembimbing2"];?></td>
                                             <td>
                                                 <div class="row">
-                                                <div class="dropdown no-arrow ml-2">
-                                                    <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <i class="fas fa-exclamation-triangle"></i>
+                                                    <button class="btn btn-danger btn-circle btn-sm ml-2" type="button"
+                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUp('<?= $row['id']; ?>','<?= $row['tanggal']; ?>', '<?= $row['waktu']; ?>', '<?= $row['mahasiswa']; ?>')">
+                                                    <i class="fas fa-trash"></i>
                                                     </button>
-                                                    <div class="dropdown-menu animated--fade-in" title="edit/delete" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
                                             </div></div>
                                             </td> <?php } ; ?>
                                         </tr>
@@ -112,5 +105,40 @@ $result = mysqli_query($conn, $query);
 
             </div>
             <!-- End of Main Content -->
+           
+            <!-- Modal Edit -->
+            <div class="modal fade" id="popdel" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="label">Edit</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Delete Data Sidang</div>
+                        <div class="form-group px-3 pb-3">
+                            <form name="delete" id="delete" action="delete" method="POST">
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="id" id="id"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="date" name="tanggal" id="tanggal"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="time" name="waktu" id="waktu"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="mahasiswa" id="mahasiswa"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <input class="btn btn-primary" type="submit" value="Delete"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function popUp(id, tanggal, waktu, mahasiswa) {
+                    document.querySelector('#popdel input[name="id"]').value = id;
+                    document.querySelector('#popdel input[name="tanggal"]').value = tanggal;
+                    document.querySelector('#popdel input[name="waktu"]').value = waktu;
+                    document.querySelector('#popdel input[name="mahasiswa"]').value = mahasiswa;
+                }
+            </script>
 
             <?php $this->view("fit/footer", $data);?>

@@ -18,4 +18,21 @@ if(isset($_POST['id_lobi']))
     }
 }
 
+else if(isset($_POST['id']))
+{   $id = $_POST['id'];
+    $date = $_POST['tanggal'];
+    $time = $_POST['waktu'];
+    $isi = $_POST['mahasiswa'];
+
+    $deletesidang="DELETE FROM jadwalsidang WHERE jadwalsidang.id = '$id'";
+
+    if(mysqli_query($conn, $deletesidang)){
+        header('location:jadwalsidang');
+    }else{
+        echo "eror: " . mysqli_error($conn);
+        header('Refresh : 3, location:jadwalsidang');
+    }
+}
+
+
 ?>
