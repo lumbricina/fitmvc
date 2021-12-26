@@ -14,7 +14,8 @@ if(!isset($_SESSION['user'])){
 $data['page_title'] = "JadwalSidang";$this->view("fit/headeradmin", $data);
 include("koneksi.php");
 #$nama=mysqli_fetch_assoc(mysqli_query("SELECT * FROM pembimbing"));
-$result = mysqli_query($conn, "SELECT * FROM jadwalview");
+$query= "SELECT jadwalsidang.*, pembimbing.pembimbing1, pembimbing.pembimbing2, proposal.judul FROM jadwalsidang INNER JOIN pembimbing ON jadwalsidang.mahasiswa=pembimbing.mahasiswa INNER JOIN proposal ON pembimbing.mahasiswa=proposal.nama AND pembimbing.pembimbing1=proposal.pembimbing1 AND pembimbing.pembimbing2=proposal.pembimbing2";
+$result = mysqli_query($conn, $query);
 ?>
 
                 <!-- Begin Page Content -->
@@ -35,20 +36,20 @@ $result = mysqli_query($conn, "SELECT * FROM jadwalview");
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Tanggal</h7>                                 
                                     <input type="date" class="form-control form-control-user"
-                                        name="date" id="date" aria-describedby="date">
+                                        name="date" id="date" aria-describedby="date" required>
                                 </div>
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Waktu</h7>                                 
                                     <input type="time" name="time" class="form-control form-control-user"
-                                        id="time" aria-describedby="time"> 
+                                        id="time" aria-describedby="time" required> 
                                     </div> </div>                                            
                             <h7 class="text-gray-900 mb-4">Nama Mahasiswa</h7>
-                                                                
+                                                        
                             <?php 
-                                    $result = mysqli_query($conn, "SELECT * FROM pembimbing;");
+                                    $res = mysqli_query($conn, "SELECT * FROM pembimbing;");
                                     
                                     echo "<select name='mahasiswa' id='mahasiswa' class='form-control form-control-user mb-2'";
-                                    while ($row = mysqli_fetch_array($result)) {
+                                    while ($row = mysqli_fetch_array($res)) {
                                         echo "<option value='".$row['mahasiswa'] . "'>" . $row['mahasiswa'] . "</option>";
                                     }
                                     echo "</select>"?>
