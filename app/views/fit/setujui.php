@@ -20,7 +20,7 @@
     $pem2=$_GET['pembimbing2'];
     $judul=$_GET['judul'];
 
-    if(count($_POST)>0) {
+    if(isset($_POST['submit'])) {
         mysqli_query($conn,"UPDATE proposal set status='3' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
         mysqli_query($conn,"INSERT INTO pembimbing(id, mahasiswa, pembimbing1, pembimbing2) VALUES (NULL, '$name', '$pem1', '$pem2')");
     }
@@ -58,7 +58,7 @@
                             <p> Untuk batal tekan tombol back (kembali ke halaman sebelumnya) </p>
                                 <form method="POST" action="">
                                 <h7 class="text-gray-900 mb-4">Mahasiswa</h7>
-                                    <input type="text" readonly class="form-control form-control-user" name="userid"  value="<?php echo $row['nama']; ?>">
+                                    <input type="text" readonly class="form-control form-control-user" name="nama"  value="<?php echo $row['nama']; ?>">
                                         <br>
                                 <h7 class="text-gray-900 mb-4">Pembimbing1</h7>
                                     <input type="text" readonly class="form-control form-control-user" name="pembimbing1" class="txtField" value="<?php echo $row['pembimbing1']; ?>">
