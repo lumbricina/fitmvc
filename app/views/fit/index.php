@@ -18,7 +18,9 @@
 $query="SELECT * FROM tawarandosen";
 $nama=$_SESSION['user']['nama'];
 $nrp=mysqli_fetch_assoc(mysqli_query($conn,"SELECT username FROM user WHERE nama='$nama'"));
-$pem="SELECT * FROM pembimbing WHERE mahasiswa='$nama'";?>
+$pem="SELECT * FROM pembimbing WHERE mahasiswa='$nama'";
+$judul=mysqli_fetch_assoc(mysqli_query($conn,"SELECT judul FROM proposal WHERE nama='$nama'"));
+?>
 
 
         
@@ -91,21 +93,19 @@ $pem="SELECT * FROM pembimbing WHERE mahasiswa='$nama'";?>
                                             if (!empty($result) && $result->num_rows > 0) {
                                                 while($row = $result->fetch_assoc()) {
                                         ?>
+                                    <h6>Judul</h6>
+                                    <div class="text-left sup text-primary">
+                                        <p> <?php echo $judul;?></p></div>
                                     <h6>Dosbing 1</h6>
                                     <div class="text-left sup text-primary">
                                     <p><?php echo$row["pembimbing1"];?></p></div>
+
                                     <h6>Dosbing 2</h6>
                                     <div class="text-left sup text-primary">
                                     <p><?php echo$row["pembimbing2"];}}?></p></div>
-                                    <h6>Judul</h6>
-                                    <div class="text-left sup text-primary">
-                                        <p>Judul Tugas Akhir</p></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-               
-
                 </div>
                 <!-- /.container-fluid -->
 
