@@ -1,4 +1,4 @@
-<?php include('koneksi.php');   $nama=$_SESSION['user']['nama'];
+<?php include('koneksi.php');  $nama=$_SESSION['user']['nama'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +64,11 @@
                 <a class="nav-link" href="jadwalsidang">
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Jadwal Sidang</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tambahuser">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Tambah User</span></a>
             </li>
 
                         <!-- Nav Item - Lobi -->
