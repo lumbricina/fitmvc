@@ -64,7 +64,7 @@
                                     <input type="text" readonly class="form-control form-control-user" name="pembimbing1" class="txtField" value="<?php echo $row['pembimbing1']; ?>">
                                         <br>
                                 <h7 class="text-gray-900 mb-4">Pembimbing2</h7>
-                                    <input type="text" readonly class="form-control form-control-user" name="pembimbing2" class="txtField" value="<?php echo $row['pembimbing2']; ?>">
+                                    <input type="text" class="form-control form-control-user" name="pembimbing2" class="txtField" value="<?php echo $row['pembimbing2']; ?>">
                                         <br>
                                 <h7 class="text-gray-900 mb-4">Judul</h7>
                                     <input type="text" readonly class="form-control form-control-user" name="judul" class="txtField" value="<?php echo $row['judul']; ?>">

@@ -104,7 +104,7 @@ $query = "SELECT * FROM proposal";?>
                             <form name="revisi" id="revisi" action="revisi" method="POST">
                             <div class="px-3 pb-3"><input readonly name="mhs" id="mhs" class="form-control form-control-user" /></div>
                             <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem1" id="pem1" /></div>
-                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem2" id="pem2" /></div>
+                            <div class="px-3 pb-3"><input class="form-control form-control-user" name="pem2" id="pem2" /></div>
                             <div class="px-3 pb-3"><input type="text" name="isirevisi" class="form-control form-control-user" id="isirevisi" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
                         </div></div>
                         <div class="modal-footer">
