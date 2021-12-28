@@ -128,9 +128,9 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                             if($row["role"]=='1'){
                                                 echo 'Admin';
                                             }elseif($row["role"]=='2'){
-                                                echo 'Dosen IT ', $row["username"];
+                                                echo  $row["username"],' (Dosen IT)';
                                             }elseif($row["role"]==='4'){
-                                                echo 'Dosen Luar ', $row["username"];
+                                                echo $row["username"],' (Dosen Luar)';
                                             }else{}; #ini buat yg diliat aja?></td>
                                             <td><?php echo$row["nilai1"];?></td>
                                             <td><?php echo$row["nilai2"];?></td>
