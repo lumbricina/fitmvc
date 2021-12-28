@@ -51,10 +51,25 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                     id="text" name="isi"                                        
                                     placeholder="masukan isi" autocomplete="off">
                             </div>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
+                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>
+                            <input type="hidden" name="button_pressed" value="1" onclick="sendEmail()" />
                             </div></form></div>
+<script>
+function sendemail()
+{
+    var url = '/sendEmail.php';
 
+    new Ajax.Request(url,{
+            onComplete:function(transport)
+            {
+                var feedback = transport.responseText.evalJSON();
+                if(feedback.result==0)
+                    alert('There was a problem sending the email, please try again.');
+            }
+        });
 
+}
+</script>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
