@@ -38,12 +38,18 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                         <form name="submitnilai" action="submitnilai" method="POST">
                             <div class="form-group">
                                 <div class="row">
-                                <div class="col-lg-4">
-                            <h7 class="text-gray-900 mb-4">Mahasiswa</h7>                                 
-                                    <input type="text" class="form-control form-control-user"
-                                        id="mhs" name="mhs" placeholder="Nama Mahasiswa">
+                                <div class="col-lg-6">
+                            <h7 class="text-gray-900 mb-4">Mahasiswa</h7>
+                            <?php 
+                                    $res = mysqli_query($conn, "SELECT * FROM jadwalsidang;");
+                                    
+                                    echo "<select name='mahasiswa' id='mahasiswa' class='form-control form-control-user mb-2'>";
+                                    while ($row = mysqli_fetch_array($res)) {
+                                        echo "<option value='".$row['mahasiswa'] . "'>" . $row['mahasiswa'] . "</option>";
+                                    }
+                                    echo "</select>"?>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                             <h7 class="text-gray-900 mb-4">Masukkan nilai sebagai :</h7>
                             <select name='role' id='role' class='form-control form-control-user mb-2'>
                                     <option value='' disabled selected>Pilih Role</option>
@@ -55,35 +61,35 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                 </select>
                                 </div></div>
                                 <div class="row">
-                                    <h6 class="m-0 font-weight-bold text-primary">Masukkan Nilai</h6>
+                                    <h6 class="ml-2 mt-3 font-weight-bold text-primary">Masukkan Nilai</h6>
                                 </div>
                                 <div class="row">
-                                <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                 <h7 class="text-gray-900 mb-4">Kategori 1 </h7>                                 
                                     <input type="number" min="0" max="25" class="form-control form-control-user"
                                         id="n1" name="n1" placeholder="n1"> 
-                                    </div> <div class="col-lg-2">
+                                    </div> <div class="col-lg-3">
                                 <h7 class="text-gray-900 mb-4">Kategori 2 </h7>                                 
                                     <input type="number" min="0" max="25" class="form-control form-control-user"
                                         id="n2" name="n2" placeholder="n2"> 
-                                    </div><div class="col-lg-2">
+                                    </div><div class="col-lg-3">
                                 <h7 class="text-gray-900 mb-4">Kategori 3 </h7>                                 
                                     <input type="number" min="0" max="25" class="form-control form-control-user"
                                         id="n3" name="n3" placeholder="n3"> 
-                                    </div><div class="col-lg-2">
+                                    </div><div class="col-lg-3">
                                 <h7 class="text-gray-900 mb-4">Kategori 4 </h7>                                 
                                     <input type="number" min="0" max="25" class="form-control form-control-user"
                                         id="n4" name="n4" placeholder="n4"> 
                                     </div></div>
                                     <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-lg-12 mt-2">
                                 <h7 class="text-gray-900 mb-4">Revisi</h7>                                 
                                     <input type="text" class="form-control form-control-user"
                                         id="rev" name="rev" placeholder="revisi"> 
                                     </div>
 
                             </div>
-                                <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
+                                <input id="btnsubmit" type="submit" name="btnsubmit" class="mt-2 btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
                             </div></form></div></div>
 
                         
@@ -111,7 +117,8 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                   <?php while($row = $result->fetch_assoc()) { ?>
+                                   <?php while($row = $result->fetch_assoc()) {
+                                       $total=  $row["nilai1"]+$row["nilai2"]+$row["nilai3"]+$row["nilai4"];?>
                                         <tr>
                                             <td><?php echo$row["mahasiswa"];?></td>
                                             <td><?php echo$row["role"];?></td>
@@ -119,18 +126,9 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                             <td><?php echo$row["nilai2"];?></td>
                                             <td><?php echo$row["nilai3"];?></td>
                                             <td><?php echo$row["nilai4"];?></td>
-                                            <td><?php #INI BELOM BENER?></td>
+                                            <td><?php echo$total;?></td>
                                             <td><?php echo$row["revisi"];?></td>
-                                            <td>
-                                                <!-- Ini belom bener ke bawah. b elom tested juga -->
-                                                <div class="row">
-                                                <a href="edit?id_lobi=<?php echo $row['id_lobi']; ?>&date=<?php echo $row['date']; ?>&time=<?php echo $row['time']; ?>&isi=<?php echo $row['isi']; ?>" class="btn btn-success btn-circle btn-sm ml-2" id="edit" name="edit"><i class="fas fa-edit"> </i></a>
-                                                    <button class="btn btn-danger btn-circle btn-sm ml-2" type="button"
-                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUp('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
-                                                    <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </td><?php }; ?>
+                                            <?php }; ?>
                                         </tr>
                                     </tbody>
                                 </table><?php };?>
