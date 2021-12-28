@@ -16,6 +16,7 @@ $this->view("fit/headerpem2", $data);
 include('koneksi.php');
 
 $uname=$_SESSION['user']['username'];
+$role1=$_SESSION['user']['role'];
 $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
 
 
@@ -51,14 +52,16 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                 </div>
                                 <div class="col-lg-6">
                             <h7 class="text-gray-900 mb-4">Masukkan nilai sebagai :</h7>
-                            <select name='role' id='role' class='form-control form-control-user mb-2'>
-                                    <option value='' disabled selected>Pilih Role</option>
-                                    <option value='1'>Penilai 1</option>
-                                    <option value='2'>Penilai 2</option>
-                                    <option value='3'>Penilai 3</option>
-                                    <option value='4'>Pembimbing 1</option>
-                                    <option value='5'>Pembimbing 2</option>
-                                </select>
+                                <input readonly type="text" class="form-control form-control-user" value="<?php 
+                                if($role1=='1'){
+                                    echo 'Admin';
+                                }elseif($role1=='2'){
+                                    echo 'Dosen IT';
+                                }elseif($role1==='4'){
+                                    echo 'Dosen Luar';
+                                }else{}; #ini buat yg diliat aja?>">
+                                <input hidden type="text" class="form-control form-control-user"
+                                        id="role" name="role" value="<?php echo$role1;#ini buat inputnya ke database?>">  
                                 </div></div>
                                 <div class="row">
                                     <h6 class="ml-2 mt-3 font-weight-bold text-primary">Masukkan Nilai</h6>
@@ -121,7 +124,14 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                        $total=  $row["nilai1"]+$row["nilai2"]+$row["nilai3"]+$row["nilai4"];?>
                                         <tr>
                                             <td><?php echo$row["mahasiswa"];?></td>
-                                            <td><?php echo$row["role"];?></td>
+                                            <td><?php 
+                                            if($row["role"]=='1'){
+                                                echo 'Admin';
+                                            }elseif($row["role"]=='2'){
+                                                echo 'Dosen IT ', $row["username"];
+                                            }elseif($row["role"]==='4'){
+                                                echo 'Dosen Luar ', $row["username"];
+                                            }else{}; #ini buat yg diliat aja?></td>
                                             <td><?php echo$row["nilai1"];?></td>
                                             <td><?php echo$row["nilai2"];?></td>
                                             <td><?php echo$row["nilai3"];?></td>
