@@ -126,7 +126,7 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                             <td><?php echo$row["mahasiswa"];?></td>
                                             <td><?php 
                                             if($row["role"]=='1'){
-                                                echo 'Admin';
+                                                echo 'Admin ';
                                             }elseif($row["role"]=='2'){
                                                 echo  $row["username"],' (Dosen IT)';
                                             }elseif($row["role"]==='4'){
