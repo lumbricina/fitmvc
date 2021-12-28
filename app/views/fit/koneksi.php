@@ -25,6 +25,9 @@ if(isset($_POST['login'])){
     
     //Redirecting User Based on Role
       switch($role){
+        case '4':
+          header('location:homepem2');
+          break;
         case '3':
         header('location:index');
         break;
