@@ -14,7 +14,7 @@ if(!isset($_SESSION['user'])){
 $data['page_title'] = "Penilaian";
 $this->view("fit/headerpem2", $data);
 include('koneksi.php');
-$role=$_SESSION['user']['role'];
+
 $uname=$_SESSION['user']['username'];
 $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
 
