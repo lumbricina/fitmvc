@@ -88,6 +88,7 @@ function sendemail()
                                             <th>Waktu</th>
                                             <th>Isi</th>
                                             <th>Status</th>
+                                            <th>File</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -104,6 +105,7 @@ function sendemail()
                                             }elseif($row["status"]=='3'){
                                                 echo 'sudah disetujui';
                                             }else{};?></td>
+                                            <td><a href="uploads/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                                             <td>
                                                 <div class="row">
                                                 <a href="edit?id_lobi=<?php echo $row['id_lobi']; ?>&date=<?php echo $row['date']; ?>&time=<?php echo $row['time']; ?>&isi=<?php echo $row['isi']; ?>" class="btn btn-success btn-circle btn-sm ml-2" id="edit" name="edit"><i class="fas fa-edit"> </i></a>
