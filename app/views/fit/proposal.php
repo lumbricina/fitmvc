@@ -56,7 +56,7 @@ $query = "SELECT * FROM proposal";?>
                                             <td><?php echo$row["judul"];?></td>
                                             <td><?php echo$row["pembimbing1"];?></td>
                                             <td><?php echo$row["pembimbing2"];?></td>
-                                            <td><div style="width: 250px; height: 200px; overflow-y: auto; padding: right -100px;"><?php echo$row["ringkasan"];?></div></td>
+                                            <td><div style="max-width: 250px; max-height: 200px; overflow-y: auto; padding: right -100px;"><?php echo$row["ringkasan"];?></div></td>
                                             <td><?php if($row["status"]=='1'){
                                                 echo 'belum disetujui';
                                             }elseif($row["status"]=='2'){
@@ -79,8 +79,8 @@ $query = "SELECT * FROM proposal";?>
                                                     </form></input>-->
                                             </div></div>
                                             </td>
-                                        </tr>
-                                    </tbody><?php }};?>
+                                        </tr><?php }};?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
