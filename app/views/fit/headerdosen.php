@@ -66,6 +66,11 @@
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Lobi</span></a>
             </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="penilaian">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Penilaian</span></a>
+            </li> 
 
             
             <!-- Divider -->

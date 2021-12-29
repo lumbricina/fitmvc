@@ -70,6 +70,11 @@
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Tambah User</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="listnilai">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Nilai</span></a>
+            </li>
 
                         <!-- Nav Item - Lobi -->
             <!--            <li class="nav-item">

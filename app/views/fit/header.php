@@ -65,6 +65,11 @@
                 <a class="nav-link" href="lobi">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Lobi</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="listnilai">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Nilai</span></a>
             </li>  
 
             

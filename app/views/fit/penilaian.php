@@ -2,12 +2,6 @@
 if(!isset($_SESSION['user'])){
     header('location:login');
     session_destroy();
-}elseif ($_SESSION['user']['role']!='4') {
-    session_destroy();
-}elseif ($_SESSION['user']['role']=='3') {
-    session_destroy();
-}elseif ($_SESSION['user']['role']=='2') {
-    session_destroy();
 }else {
 
 }
@@ -16,10 +10,6 @@ $data['page_title'] = "Penilaian";
 if(!isset($_SESSION['user'])){
     header('location:login');
     session_destroy();
-}elseif ($_SESSION['user']['role']=='3') {
-    $this->view("fit/header",$data);
-}elseif ($_SESSION['user']['role']=='1') {
-    $this->view("fit/headeradmin",$data);
 }elseif ($_SESSION['user']['role']=='2') {
     $this->view("fit/headerdosen",$data);
 }elseif ($_SESSION['user']['role']=='4') {
@@ -51,7 +41,7 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                         <form name="submitnilai" action="submitnilai" method="POST">
                             <div class="form-group">
                                 <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                             <h7 class="text-gray-900 mb-4">Mahasiswa</h7>
                             <?php 
                                     $res = mysqli_query($conn, "SELECT * FROM jadwalsidang;");
@@ -62,7 +52,7 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                     }
                                     echo "</select>"?>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                             <h7 class="text-gray-900 mb-4">Masukkan nilai sebagai :</h7>
                                 <input readonly type="text" class="form-control form-control-user" value="<?php 
                                 if($role1=='1'){
@@ -74,7 +64,17 @@ $query = "SELECT * FROM hasilsidang WHERE username='$uname'";
                                 }else{}; #ini buat yg diliat aja?>">
                                 <input hidden type="text" class="form-control form-control-user"
                                         id="role" name="role" value="<?php echo$role1;#ini buat inputnya ke database?>">  
-                                </div></div>
+                                </div>
+                                <div class="col-lg-3">
+                            <h7 class="text-gray-900 mb-4">Peran :</h7>
+                            <select name='peran' id='peran' class='form-control form-control-user mb-2'>
+                                <option value='pen1'> Penilai 1 </option>
+                                <option value='pen2'> Penilai 2 </option>
+                                <option value='pen3'> Penilai 3 </option>
+                                <option value='pem1'> Pembimbing 1 </option>
+                                <option value='pem2'> Pembimbing 2 </option>
+                            </select>
+                                </div> </div>
                                 <div class="row">
                                     <h6 class="ml-2 mt-3 font-weight-bold text-primary">Masukkan Nilai</h6>
                                 </div>
