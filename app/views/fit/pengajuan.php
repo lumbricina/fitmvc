@@ -81,8 +81,8 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                             <th>Pembimbing 1</th>
                                             <th>Pembimbing 2</th>
                                             <th>Judul</th>
-                                            <th>Status</th>
                                             <th>File</th>
+                                            <th>Status</th>
                                             <th>Feedback / Revisi</th>
                                         </tr>
                                     </thead>
@@ -96,6 +96,7 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                             <td><?php echo$row["pembimbing1"];?></td>
                                             <td><?php echo$row["pembimbing2"];?></td>
                                             <td><?php echo$row["judul"];?></td>
+                                            <td><a href="uploadPengajuan/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                                             <td><?php if($row["status"]=='1'){
                                                 echo 'belum disetujui';
                                             }elseif($row["status"]=='2'){
@@ -103,7 +104,6 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                             }elseif($row["status"]=='3'){
                                                 echo 'sudah disetujui';
                                             }else{};?></td>
-                                            <td><a href="uploadPengajuan/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                                             <td><?php echo$row["revisi"];}}?></td>
                                         </tr>                                        
                                     </tbody>

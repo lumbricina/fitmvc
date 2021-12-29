@@ -39,6 +39,7 @@ $query = "SELECT * FROM proposal";?>
                                             <th>Pembimbing 1</th>
                                             <th>Pembimbing 2</th>
                                             <th>Ringkasan</th>
+                                            <th>File</th>
                                             <th>Status</th>
                                             <th>Revisi</th>
                                             <th>Action</th>
@@ -56,7 +57,8 @@ $query = "SELECT * FROM proposal";?>
                                             <td><?php echo$row["judul"];?></td>
                                             <td><?php echo$row["pembimbing1"];?></td>
                                             <td><?php echo$row["pembimbing2"];?></td>
-                                            <td><div style="max-width: 250px; max-height: 200px; overflow-y: auto; padding: right -100px;"><?php echo$row["ringkasan"];?></div></td>
+                                            <td><div style="max-width: 275px; max-height: 200px; overflow-y: auto; padding: right -100px;"><?php echo$row["ringkasan"];?></div></td>
+                                            <td><a href="uploadPengajuan/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                                             <td><?php if($row["status"]=='1'){
                                                 echo 'belum disetujui';
                                             }elseif($row["status"]=='2'){
