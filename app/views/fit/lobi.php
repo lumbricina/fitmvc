@@ -51,11 +51,12 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                     id="text" name="isi"                                        
                                     placeholder="masukan isi" autocomplete="off" require>
                             <h7 class="text-gray-900 mb-4">Upload File</h7>
-                                    <input type="file" name="file" class="form-control form-control-file">
+                                    <input type="file" id="file1" name="file1" class="form-control form-control-file">
                             </div>
                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>
-                            <input type="hidden" name="button_pressed" value="1" onclick="sendEmail()" />
+                            <!-- <input type="hidden" name="button_pressed" value="1" onclick="sendEmail()" /> -->
                             </div></form></div>
+<!-- 
 <script>
 function sendemail()
 {
@@ -71,7 +72,7 @@ function sendemail()
         });
 
 }
-</script>
+</script> -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
