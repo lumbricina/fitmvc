@@ -2,7 +2,7 @@
 
 include('koneksi.php');
 
-if(isset($_POST['submit']))
+if(isset($_POST['pen1']))
 {
     $mahasiswa = $_POST['mahasiswa'];
     $pen1 = $_POST['pen1'];
