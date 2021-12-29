@@ -60,7 +60,7 @@ include('koneksi.php');
                                     <option value='1'>Admin</option>
                                     <option value='2'>Dosen</option>
                                     <option value='3'>Mahasiswa</option>
-                                    <option value='4'>Pembimbing 2 dari luar</option>
+                                    <option value='4'>Eksternal</option>
                                 </select>
 
                             </div>

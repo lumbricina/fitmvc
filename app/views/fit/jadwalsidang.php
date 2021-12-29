@@ -33,17 +33,17 @@ $result = mysqli_query($conn, $query);
                             <form name="jadwalsidang" action="upjadwal" method="POST">
                             <div class="form-group">
                                 <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                             <h7 class="text-gray-900 mb-4">Tanggal</h7>                                 
                                     <input type="date" class="form-control form-control-user"
                                         name="date" id="date" aria-describedby="date">
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                             <h7 class="text-gray-900 mb-4">Waktu</h7>                                 
                                     <input type="time" name="time" class="form-control form-control-user"
                                         id="time" aria-describedby="time"> 
                                     </div> 
-                                </div>                                            
+                            <div class="col-lg-6">                                            
                             <h7 class="text-gray-900 mb-4">Nama Mahasiswa</h7>
                                                         
                             <?php 
@@ -54,6 +54,41 @@ $result = mysqli_query($conn, $query);
                                         echo "<option value='".$row['mahasiswa'] . "'>" . $row['mahasiswa'] . "</option>";
                                     }
                                     echo "</select>"?>
+                            </div></div>
+                            <div class="row">
+                            <div class="col-lg-4">
+                                <h7 class="text-gray-900 mb-4">Penilai 1</h7>                                 
+                                    <?php 
+                                            $rel = mysqli_query($conn, "SELECT * FROM user WHERE role='2';");
+                                            
+                                            echo "<select name='pen1' id='pen1' class='form-control form-control-user mb-2'>";
+                                            while ($ro = mysqli_fetch_array($rel)) {
+                                                echo "<option value='".$ro['nama'] . "'>" . $ro['nama'] . "</option>";
+                                            }
+                                            echo "</select>"?>
+                                </div> 
+                                <div class="col-lg-4">
+                                <h7 class="text-gray-900 mb-4">Penilai 2</h7>                                 
+                                    <?php 
+                                            $rel = mysqli_query($conn, "SELECT * FROM user WHERE role='2';");
+                                            
+                                            echo "<select name='pen2' id='pen2' class='form-control form-control-user mb-2'>";
+                                            while ($ro = mysqli_fetch_array($rel)) {
+                                                echo "<option value='".$ro['nama'] . "'>" . $ro['nama'] . "</option>";
+                                            }
+                                            echo "</select>"?>
+                                </div>
+                                <div class="col-lg-4">
+                                <h7 class="text-gray-900 mb-4">Penilai 3 (eksternal)</h7>                                 
+                                    <?php 
+                                            $rel = mysqli_query($conn, "SELECT * FROM user WHERE role='4';");
+                                            
+                                            echo "<select name='pen3' id='pen3' class='form-control form-control-user mb-2'>";
+                                            while ($ro = mysqli_fetch_array($rel)) {
+                                                echo "<option value='".$ro['nama'] . "'>" . $ro['nama'] . "</option>";
+                                            }
+                                            echo "</select>"?>
+                                </div>
                             </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
                             </div>
@@ -75,6 +110,9 @@ $result = mysqli_query($conn, $query);
                                             <th>Judul</th>
                                             <th>Pembimbing 1</th>
                                             <th>Pembimbing 2</th>
+                                            <th>Penilai 1</th>
+                                            <th>Penilai 2</th>
+                                            <th>Penilai 3</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -89,6 +127,9 @@ $result = mysqli_query($conn, $query);
                                             <td><?php echo$row["judul"];?></td>
                                             <td><?php echo$row["pembimbing1"];?></td>
                                             <td><?php echo$row["pembimbing2"];?></td>
+                                            <td><?php echo$row["penilai1"];?></td>
+                                            <td><?php echo$row["penilai2"];?></td>
+                                            <td><?php echo$row["penilai3"];?></td>
                                             <td>
                                                 <div class="row">
                                                 <a href="delsidang?id=<?php echo $row['id']; ?>&date=<?php echo $row['tanggal']; ?>&time=<?php echo $row['waktu']; ?>&mahasiswa=<?php echo $row['mahasiswa']; ?>" class="btn btn-danger btn-circle btn-sm ml-2" id="delete" name="delete"><i class="fas fa-trash"> </i></a>

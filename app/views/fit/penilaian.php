@@ -12,7 +12,19 @@ if(!isset($_SESSION['user'])){
 
 }
 $data['page_title'] = "Penilaian";
-$this->view("fit/headerpem2", $data);
+
+if(!isset($_SESSION['user'])){
+    header('location:login');
+    session_destroy();
+}elseif ($_SESSION['user']['role']=='3') {
+    $this->view("fit/header",$data);
+}elseif ($_SESSION['user']['role']=='1') {
+    $this->view("fit/headeradmin",$data);
+}elseif ($_SESSION['user']['role']=='2') {
+    $this->view("fit/headerdosen",$data);
+}elseif ($_SESSION['user']['role']=='4') {
+    $this->view("fit/headerpem2",$data);
+}
 include('koneksi.php');
 
 $uname=$_SESSION['user']['username'];

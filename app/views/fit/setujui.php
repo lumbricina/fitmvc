@@ -17,11 +17,12 @@
 
     $name=$_GET['nama'];
     $pem1=$_GET['pembimbing1'];
-    $pem2=$_GET['pembimbing2'];
+    
     $judul=$_GET['judul'];
 
     if(isset($_POST['submit'])) {
-        mysqli_query($conn,"UPDATE proposal set status='3' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
+        $pem2=$_POST['pembimbing2'];
+        mysqli_query($conn,"UPDATE proposal set status='3' AND pembimbing2 = '$pem2' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND judul='" . $_GET['judul'] . "')");
         mysqli_query($conn,"INSERT INTO pembimbing(id, mahasiswa, pembimbing1, pembimbing2) VALUES (NULL, '$name', '$pem1', '$pem2')");
     }
     $result = mysqli_query($conn,"SELECT * FROM proposal WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
@@ -69,7 +70,7 @@
                                     
                                     echo "<select name='pembimbing2' id='pembimbing2' class='form-control form-control-user mb-2'>";
                                     while ($ro = mysqli_fetch_array($rel)) {
-                                        echo "<option value='".$row['nama'] . "'>" . $ro['nama'] . "</option>";
+                                        echo "<option value='".$ro['nama'] . "'>" . $ro['nama'] . "</option>";
                                     }
                                     echo "</select>"?>
                                         <br>

@@ -16,9 +16,9 @@ if(!isset($_SESSION['user'])){
     header('location:login');
     session_destroy();
 }elseif ($_SESSION['user']['role']=='3') {
-    $query = "SELECT*FROM proposal WHERE nama='$nama'";
+    $query = "SELECT * FROM proposal WHERE nama='$nama'";
 }elseif ($_SESSION['user']['role']=='2') {
-    $query = "SELECT*FROM proposal WHERE pembimbing1='$nama'";}
+    $query = "SELECT * FROM proposal WHERE pembimbing1='$nama'";}
 ?>
 
                   <!-- Begin Page Content -->
