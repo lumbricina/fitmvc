@@ -38,18 +38,20 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Tanggal</h7>                                 
                                     <input type="date" class="form-control form-control-user"
-                                        id="date" name="date">
+                                        id="date" name="date" require>
                                 </div>
                                 <div class="col-lg-4">
                             <h7 class="text-gray-900 mb-4">Waktu</h7>                                 
                                     <input type="time" class="form-control form-control-user"
-                                        id="time" name="time"> 
+                                        id="time" name="time" require> 
                                     </div> </div>                                            
                             <h7 class="text-gray-900 mb-4">Isi</h7>
                                                                 
                                     <input type="text" class="form-control form-control-user"
                                     id="text" name="isi"                                        
-                                    placeholder="masukan isi" autocomplete="off">
+                                    placeholder="masukan isi" autocomplete="off" require>
+                            <h7 class="text-gray-900 mb-4">Upload File</h7>
+                                    <input type="file" name="file" class="form-control form-control-file">
                             </div>
                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>
                             <input type="hidden" name="button_pressed" value="1" onclick="sendEmail()" />
