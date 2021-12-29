@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-12">
-                            <p> Untuk batal tekan tombol back (kembali ke halaman sebelumnya) </p>
+                            <p> Untuk batal tekan tombol back (kembali ke halaman sebelumnya) <br> Jika nama yang diinginkan tidak tersedia, harap menambah user baru terlebih dahulu. </p>
                                 <form method="POST" action="">
                                 <h7 class="text-gray-900 mb-4">Mahasiswa</h7>
                                     <input type="text" readonly class="form-control form-control-user" name="nama"  value="<?php echo $row['nama']; ?>">
@@ -64,7 +64,14 @@
                                     <input type="text" readonly class="form-control form-control-user" name="pembimbing1" class="txtField" value="<?php echo $row['pembimbing1']; ?>">
                                         <br>
                                 <h7 class="text-gray-900 mb-4">Pembimbing2</h7>
-                                    <input type="text" class="form-control form-control-user" name="pembimbing2" class="txtField" value="<?php echo $row['pembimbing2']; ?>">
+                                <?php 
+                                    $rel = mysqli_query($conn, "SELECT * FROM user WHERE role='2' OR role='4' ;");
+                                    
+                                    echo "<select name='pembimbing2' id='pembimbing2' class='form-control form-control-user mb-2'>";
+                                    while ($ro = mysqli_fetch_array($rel)) {
+                                        echo "<option value='".$row['nama'] . "'>" . $ro['nama'] . "</option>";
+                                    }
+                                    echo "</select>"?>
                                         <br>
                                 <h7 class="text-gray-900 mb-4">Judul</h7>
                                     <input type="text" readonly class="form-control form-control-user" name="judul" class="txtField" value="<?php echo $row['judul']; ?>">
