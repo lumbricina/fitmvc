@@ -32,7 +32,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                             <h6 class="m-0 font-weight-bold text-primary">Form Lobi</h6>
                         </div>
                         <div class="card-body">
-                        <form name="lobi" action="inlobi" method="POST">
+                        <form name="lobi" action="inlobi" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <div class="row">
                                 <div class="col-lg-4">
@@ -51,7 +51,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                     id="text" name="isi"                                        
                                     placeholder="masukan isi" autocomplete="off" require>
                             <h7 class="text-gray-900 mb-4">Upload File</h7>
-                                    <input type="file" id="file1" name="file1" class="form-control form-control-file">
+                                    <input type="file" accept="image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" id="file1" name="file1" class="form-control form-control-file">
                             </div>
                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>
                             <!-- <input type="hidden" name="button_pressed" value="1" onclick="sendEmail()" /> -->
