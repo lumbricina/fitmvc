@@ -1,9 +1,9 @@
 <?php 
 
 if (isset($_POST['sending_email_btn'])) {
-$to = "mileniaulwanzafira@gmail.com" . ',';
-$to .= 'aidan@example.com' . ', '; // note the comma
-$to .= 'wez@example.com';
+$to = "mileniaulwanzafira@gmail.com";// . ',';
+//$to .= 'aidan@example.com' . ', '; // note the comma
+//$to .= 'wez@example.com';
 $subject = "My subject";
 $txt = "Hello world!";
 

@@ -32,8 +32,24 @@ include('koneksi.php');
             $inlobi="INSERT INTO lobi (id_lobi, nama, date, time, isi, status, filename) VALUES (NULL, '$mahasiswa', '$date', '$time', '$isi', '1', '$filename')";
             #header('location:lobi');
 
+            
+            
+
             if(mysqli_query($conn, $inlobi)){
                 header('location:lobi');
+
+                $to = "mileniaulwanzafira@gmail.com" . ',';
+            $to .= 'nugas.time@gmail.com';// . ', '; // note the comma
+            //$to .= 'wez@example.com';
+            $subject = "My subject";
+            $txt = "Hello world!";
+
+            $headers = "From: fit.it.its@gmail.com";
+            // Always set content-type when sending HTML email
+            $headers .= "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+            mail($to,$subject,$txt,$headers);
             }else{
                 echo "error: " .mysqli_error($conn);
                 header('Refresh : 3, location:lobi');
