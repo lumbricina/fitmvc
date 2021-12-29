@@ -58,6 +58,8 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                     <textarea type="text" name="ringkasan" class="form-control form-control-user mb-2"
                                     id="text" aria-describedby="text"                                        
                                     placeholder="masukan ringkasan" autocomplete="off"></textarea>
+                                <h7 class="text-gray-900 mb-4">Upload File</h7>
+                                    <input type="file" accept=".doc, .docx, .pdf" id="file1" name="file1" class="form-control form-control-file">
                             </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="submit"></input>  
                             </form>                                                
@@ -80,6 +82,7 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                             <th>Pembimbing 2</th>
                                             <th>Judul</th>
                                             <th>Status</th>
+                                            <th>File</th>
                                             <th>Feedback / Revisi</th>
                                         </tr>
                                     </thead>
@@ -100,6 +103,7 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                             }elseif($row["status"]=='3'){
                                                 echo 'sudah disetujui';
                                             }else{};?></td>
+                                            <td><a href="uploadPengajuan/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                                             <td><?php echo$row["revisi"];}}?></td>
                                         </tr>                                        
                                     </tbody>

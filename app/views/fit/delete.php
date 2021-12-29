@@ -8,7 +8,7 @@ if(isset($_POST['id_lobi']))
     $time = $_POST['time'];
     $isi = $_POST['isi'];
     $file =  $_POST['filename'];
-    $remove = unlink('uploads/'.$file);
+    $remove = unlink('uploadLobi/'.$file);
 
     $deletelobi="DELETE FROM lobi WHERE lobi.id_lobi = '$id_lobi'";
 

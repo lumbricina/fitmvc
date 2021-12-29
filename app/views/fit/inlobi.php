@@ -15,7 +15,7 @@ include('koneksi.php');
             $filename = date(time()).$_FILES['file1']['name'];
             $ukuran = $_FILES['file1']['size'];
             $type = $_FILES['file1']['type'];
-            $folder = "uploads/";
+            $folder = "uploadLobi/";
             #$ext = pathinfo($filename, PATHINFO_EXTENSION);
 
             if ($ukuran < 1044070){
