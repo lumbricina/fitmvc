@@ -1,6 +1,7 @@
 <?php
 
 include('koneksi.php');
+$uname=$_SESSION['user']['username'];
 
 if(isset($_POST['n1'])) {
 
@@ -11,9 +12,10 @@ if(isset($_POST['n1'])) {
     $n4 = $_POST['n4'];
     $revisi = $_POST['rev'];
     $role = $_POST['role'];
-    $uname=$_SESSION['user']['username'];
+    $peran = $_POST['peran'];
+    #$uname=$_SESSION['user']['username'];
 
-    $sidang = "INSERT INTO hasilsidang (id, mahasiswa, username, role, nilai1, nilai2, nilai3, nilai4, revisi) VALUES (NULL, '$mhs', '$uname', '$role', '$n1', '$n2', '$n3', '$n4', '$revisi')";
+    $sidang = "INSERT INTO hasilsidang (id, mahasiswa, username, role, peran, nilai1, nilai2, nilai3, nilai4, revisi) VALUES (NULL, '$mhs', '$uname', '$role', '$peran', '$n1', '$n2', '$n3', '$n4', '$revisi')";
 
     if(mysqli_query($conn,$sidang)){
         header('location:penilaian', true, 302);
