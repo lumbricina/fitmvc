@@ -104,7 +104,16 @@ $query = "SELECT * FROM proposal";?>
                             <form name="revisi" id="revisi" action="revisi" method="POST">
                             <div class="px-3 pb-3"><input readonly name="mhs" id="mhs" class="form-control form-control-user" /></div>
                             <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem1" id="pem1" /></div>
-                            <div class="px-3 pb-3"><input class="form-control form-control-user" name="pem2" id="pem2" /></div>
+                            <?php 
+                                    $rel = mysqli_query($conn, "SELECT * FROM user WHERE role='2' OR role='4' ;");
+                                    
+                                    echo "<select name='pem2' id='pem2' class='form-control form-control-user'>";
+                                    while ($ro = mysqli_fetch_array($rel)) {
+                                        echo "<option value='".$ro['nama'] . "'>" . $ro['nama'] . "</option>";
+                                    }
+                                    echo "</select>"?>
+
+                            <!--<div class="px-3 pb-3"><input class="form-control form-control-user" name="pem2" id="pem2" /></div>-->
                             <div class="px-3 pb-3"><input type="text" name="isirevisi" class="form-control form-control-user" id="isirevisi" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">
                         </div></div>
                         <div class="modal-footer">

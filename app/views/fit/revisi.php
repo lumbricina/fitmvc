@@ -2,16 +2,16 @@
 
 include('koneksi.php');
 
-if(isset($_REQUEST['isirevisi']))
+if(isset($_POST['pem2']))
 {
-    $isirevisi = $_REQUEST['isirevisi'];
+    $isirevisi = $_POST['isirevisi'];
     ##$query = "SELECT * FROM proposal";
-    $pem1 = $_REQUEST['pem1'];
-    $nama = $_REQUEST['mhs'];
-    $pem2= $_REQUEST['pem2'];
+    $pem1 = $_POST['pem1'];
+    $nama = $_POST['mhs'];
+    $pem2= $_POST['pem2'];
 
 
-    $props="UPDATE proposal SET revisi='$isirevisi', status='2' WHERE nama='$nama' && pembimbing1='$pem1' && pembimbing2='$pem2'";
+    $props="UPDATE proposal SET revisi='$isirevisi' AND pembimbing2='$pem2', status='2' WHERE nama='$nama' && pembimbing1='$pem1'";
 
     if(mysqli_query($conn, $props)){
         #echo "uda";
