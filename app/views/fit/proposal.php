@@ -68,7 +68,7 @@ $query = "SELECT * FROM proposal";?>
                                             <td>
                                                 <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
-                                                    <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="modal" aria-haspopup="true" data-target="#poprevisi" aria-expanded="false" title="Revisi" onclick="popUpRevisi('<?= $row['nama']; ?>', '<?= $row['pembimbing1']; ?>', '<?= $row['pembimbing2']; ?>')">
+                                                    <button class="btn btn-warning btn-circle btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="modal" aria-haspopup="true" data-target="#poprevisi" aria-expanded="false" title="Revisi/Ubah pembimbing2" onclick="popUpRevisi('<?= $row['nama']; ?>', '<?= $row['pembimbing1']; ?>', '<?= $row['pembimbing2']; ?>')">
                                                     <i class="fas fa-exclamation-triangle"></i>
                                                     </button>
                                                 </div>
@@ -104,14 +104,16 @@ $query = "SELECT * FROM proposal";?>
                             <form name="revisi" id="revisi" action="revisi" method="POST">
                             <div class="px-3 pb-3"><input readonly name="mhs" id="mhs" class="form-control form-control-user" /></div>
                             <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="pem1" id="pem1" /></div>
+                            <div class="px-3 pb-3">
                             <?php 
-                                    $rel = mysqli_query($conn, "SELECT * FROM user WHERE role='2' OR role='4' ;");
+                                    $result = mysqli_query($conn, "SELECT * FROM user WHERE role='2' or role='4';");
                                     
-                                    echo "<select name='pem2' id='pem2' class='form-control form-control-user'>";
-                                    while ($ro = mysqli_fetch_array($rel)) {
-                                        echo "<option value='".$ro['nama'] . "'>" . $ro['nama'] . "</option>";
+                                    echo "<select name='pem2' id='pem2' class='form-control form-control-user mb-2'>";
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        echo "<option value='".$row['nama'] . "'>" . $row['nama'] . "</option>";
                                     }
                                     echo "</select>"?>
+                            </div>
 
                             <!--<div class="px-3 pb-3"><input class="form-control form-control-user" name="pem2" id="pem2" /></div>-->
                             <div class="px-3 pb-3"><input type="text" name="isirevisi" class="form-control form-control-user" id="isirevisi" aria-describedby="text" placeholder="masukan isi revisi" autocomplete="off">

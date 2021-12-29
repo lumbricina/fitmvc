@@ -22,7 +22,7 @@
 
     if(isset($_POST['submit'])) {
         $pem2=$_POST['pembimbing2'];
-        mysqli_query($conn,"UPDATE proposal set status='3' AND set pembimbing2 = '$pem2' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND judul='" . $_GET['judul'] . "')");
+        mysqli_query($conn,"UPDATE proposal set status='3' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
         mysqli_query($conn,"INSERT INTO pembimbing(id, mahasiswa, pembimbing1, pembimbing2) VALUES (NULL, '$name', '$pem1', '$pem2')");
     }
     $result = mysqli_query($conn,"SELECT * FROM proposal WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
