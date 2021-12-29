@@ -59,7 +59,7 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                                     id="text" aria-describedby="text"                                        
                                     placeholder="masukan ringkasan" autocomplete="off"></textarea>
                                 <h7 class="text-gray-900 mb-4">Upload File</h7>
-                                    <input type="file" accept=".doc, .docx, .pdf" id="file1" name="file1" class="form-control form-control-file">
+                                    <input type="file" accept=".doc, .docx, .pdf" id="file2" name="file2" class="form-control form-control-file">
                             </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="submit"></input>  
                             </form>                                                

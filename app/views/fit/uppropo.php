@@ -2,7 +2,7 @@
 
 include('koneksi.php');
 
-if(isset($_POST['pem1']))
+if(isset($_POST['judul']))
 {
     $mahasiswa = $_SESSION['user']['nama'];
     $pem1 = $_POST['pem1'];
@@ -13,11 +13,11 @@ if(isset($_POST['pem1']))
     $timezone  = +7; //WIB
     $time = gmdate('H:i:s', time() + 3600*($timezone+date("I")));
 
-    $temp = $_FILES['file1']['tmp_name'];
-    $filename = date(time()).$_FILES['file1']['name'];
-    $ukuran = $_FILES['file1']['size'];
-    $type = $_FILES['file1']['type'];
-    $folder = "uploadLobi/";
+    $temp = $_FILES['file2']['tmp_name'];
+    $filename = date(time()).$_FILES['file2']['name'];
+    $ukuran = $_FILES['file2']['size'];
+    $type = $_FILES['file2']['type'];
+    $folder = "uploadPengajuan/";
 
     if ($ukuran < 1044070){
         move_uploaded_file($temp, $folder . $filename);
