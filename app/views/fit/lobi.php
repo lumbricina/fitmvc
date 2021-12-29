@@ -111,7 +111,7 @@ function sendemail()
                                                 <div class="row">
                                                 <a href="edit?id_lobi=<?php echo $row['id_lobi']; ?>&date=<?php echo $row['date']; ?>&time=<?php echo $row['time']; ?>&isi=<?php echo $row['isi']; ?>" class="btn btn-success btn-circle btn-sm ml-2" id="edit" name="edit"><i class="fas fa-edit"> </i></a>
                                                     <button class="btn btn-danger btn-circle btn-sm ml-2" type="button"
-                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUp('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>')">
+                                                    data-toggle="modal" aria-haspopup="true" data-target="#popdel" aria-expanded="false" title="Delete" onclick="popUp('<?= $row['id_lobi']; ?>','<?= $row['date']; ?>', '<?= $row['time']; ?>', '<?= $row['isi']; ?>','<?= $row['filename']; ?>')">
                                                     <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
@@ -144,6 +144,7 @@ function sendemail()
                             <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="date" name="date" id="date"></div>
                             <div class="px-3 pb-3"><input readonly class="form-control form-control-user" type="time" name="time" id="time"></div>
                             <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="isi" id="isi"></div>
+                            <div class="px-3 pb-3"><input readonly class="form-control form-control-user" name="filename" id="filename"></div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -154,11 +155,12 @@ function sendemail()
             </div>
 
             <script>
-                function popUp(id_lobi, date, time, isi) {
+                function popUp(id_lobi, date, time, isi, filename) {
                     document.querySelector('#popdel input[name="id_lobi"]').value = id_lobi;
                     document.querySelector('#popdel input[name="date"]').value = date;
                     document.querySelector('#popdel input[name="time"]').value = time;
                     document.querySelector('#popdel input[name="isi"]').value = isi;
+                    document.querySelector('#popdel input[name="filename"]').value = filename;
                 }
             </script>
 
