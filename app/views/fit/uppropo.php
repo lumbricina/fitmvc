@@ -19,7 +19,8 @@ if(isset($_POST['judul']))
     $type = $_FILES['file2']['type'];
     $folder = "uploadPengajuan/";
 
-    if ($ukuran < 1044070){
+
+    if ($ukuran < 2044070){
         move_uploaded_file($temp, $folder . $filename);
     }
 

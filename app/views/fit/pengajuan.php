@@ -28,7 +28,7 @@ $query = "SELECT*FROM proposal WHERE nama='$nama'";
                             <h6 class="m-0 font-weight-bold text-primary">Form Pengajuan</h6>
                         </div>
                         <div class="card-body">
-                            <form name="propo" action="uppropo" method="POST">
+                            <form name="propo" action="uppropo" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <div class="row">
                                 <div class="col-lg-6">
