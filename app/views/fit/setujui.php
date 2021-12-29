@@ -17,11 +17,12 @@
 
     $name=$_GET['nama'];
     $pem1=$_GET['pembimbing1'];
-    $pem2=$_GET['pembimbing2'];
+    
     $judul=$_GET['judul'];
 
     if(isset($_POST['submit'])) {
-        mysqli_query($conn,"UPDATE proposal set status='3' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
+        $pem2=$_POST['pembimbing2'];
+        mysqli_query($conn,"UPDATE proposal set status='3' AND pembimbing2 = '$pem2' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND judul='" . $_GET['judul'] . "')");
         mysqli_query($conn,"INSERT INTO pembimbing(id, mahasiswa, pembimbing1, pembimbing2) VALUES (NULL, '$name', '$pem1', '$pem2')");
     }
     $result = mysqli_query($conn,"SELECT * FROM proposal WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
@@ -55,7 +56,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-12">
-                            <p> Untuk batal tekan tombol back (kembali ke halaman sebelumnya) </p>
+                            <p> Untuk batal tekan tombol back (kembali ke halaman sebelumnya) <br> Jika nama yang diinginkan tidak tersedia, harap menambah user baru terlebih dahulu. </p>
                                 <form method="POST" action="">
                                 <h7 class="text-gray-900 mb-4">Mahasiswa</h7>
                                     <input type="text" readonly class="form-control form-control-user" name="nama"  value="<?php echo $row['nama']; ?>">
@@ -64,7 +65,14 @@
                                     <input type="text" readonly class="form-control form-control-user" name="pembimbing1" class="txtField" value="<?php echo $row['pembimbing1']; ?>">
                                         <br>
                                 <h7 class="text-gray-900 mb-4">Pembimbing2</h7>
-                                    <input type="text" class="form-control form-control-user" name="pembimbing2" class="txtField" value="<?php echo $row['pembimbing2']; ?>">
+                                <?php 
+                                    $rel = mysqli_query($conn, "SELECT * FROM user WHERE role='2' OR role='4' ;");
+                                    
+                                    echo "<select name='pembimbing2' id='pembimbing2' class='form-control form-control-user mb-2'>";
+                                    while ($ro = mysqli_fetch_array($rel)) {
+                                        echo "<option value='".$ro['nama'] . "'>" . $ro['nama'] . "</option>";
+                                    }
+                                    echo "</select>"?>
                                         <br>
                                 <h7 class="text-gray-900 mb-4">Judul</h7>
                                     <input type="text" readonly class="form-control form-control-user" name="judul" class="txtField" value="<?php echo $row['judul']; ?>">
