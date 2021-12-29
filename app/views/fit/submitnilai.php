@@ -2,7 +2,7 @@
 
 include('koneksi.php');
 
-if(isset($_POST['submit'])) {
+if(isset($_POST['n1'])) {
 
     $mhs = $_POST['mahasiswa'];
     $n1 = $_POST['n1'];
@@ -15,7 +15,7 @@ if(isset($_POST['submit'])) {
 
     $sidang = "INSERT INTO hasilsidang (id, mahasiswa, username, role, nilai1, nilai2, nilai3, nilai4, revisi) VALUES (NULL, '$mhs', '$uname', '$role', '$n1', '$n2', '$n3', '$n4', '$revisi')";
 
-    if(mysql_query($conn,$sidang)==TRUE){
+    if(mysqli_query($conn,$sidang)){
         header('location:penilaian', true, 302);
     }else{
         echo "Error: " . $sidang . "<br>" . mysqli_error($conn);
