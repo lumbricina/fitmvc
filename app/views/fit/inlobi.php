@@ -14,6 +14,19 @@ require 'PHPMailer/src/SMTP.php';
     if(isset($_POST['isi']))
         {
             $mahasiswa = $_SESSION['user']['nama'];
+            #$emailmhs = mysqli_fetch_array(mysqli_query($conn, "SELECT email FROM user WHERE nama='$mahasiswa'"));
+            #$emailpem1 = mysqli_fetch_array(mysqli_query($conn, "SELECT user.email FROM user INNER JOIN pembimbing ON pembimbing.pembimbing1=user.nama WHERE '$mahasiswa'=pembimbing.mahasiswa"));
+            #$emailpem2 = mysqli_fetch_array(mysqli_query($conn, "SELECT user.email FROM user INNER JOIN pembimbing ON pembimbing.pembimbing2=user.nama WHERE '$mahasiswa'=pembimbing.mahasiswa"));
+
+            
+            $mhsemail = $_POST['emailmhs'];
+            
+
+            $pem1email = $_POST['emailpem1'];
+            
+
+            $pem2email = $_POST['emailpem2'];
+            
             $date = $_POST['date'];
             $time = $_POST['time'];
             $isi = $_POST['isi'];
@@ -58,20 +71,29 @@ require 'PHPMailer/src/SMTP.php';
                 $mail->Password = 'Mejakursi1';
                 $mail->setFrom('fit.it.its@gmail.com');
                 $mail->Subject = 'yo';
-                $mail->Body = 'tes yo kl masok chat yo';
-                $to='nugas.time@gmail.com'. ',';
-                $to.='mileniaulwanzafira@gmail.com';
+                $mail->Body = '<h1>Ini tes cb ss kirim mo liat kek apa y</h1> <br> <p>' . $mahasiswa . 'menambah lobi dengan keterangan pada' . $date . 'waktu' . $time . 'telah melakukan kegiatan' . $isi . '. <br> Silahkan cek website FIT untuk melihat lebih detil </p>' ;
+               
                 #$mail->SetFrom("$from", "$from");
-                $mail->addAddress("nugas.time@gmail.com");
-                $mail->addAddress("mileniaulwanzafira@gmail.com");
+                #INI EMAIL KAGA BISA INI SAMPE # BERIKUTNYA
+                $penerima = array($mhsemail, $pem1email, $pem2email);
+
+                foreach($penerima as $penerima){
+                    $mail->addCC($penerima);
+                };
+                $mail->addAddress($penerima);
+                $mail->addAddress($pem1email);
+                $mail->addAddress($pem2email);
 
                 #$mail->Subject = "$subject";
                 #$mail->Body = "$message";
                 #$mail->Send();
                 if ( $mail->send() ) {
-                    echo "Email Sent..!";
+                    #header('location:lobi');
+                    echo "uda";
                 }else{
-                    echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
+                    echo "Something is wrong. " . $mail->ErrorInfo;
+                    echo $penerima;
+
                 }
 
                 $mail->smtpClose();
