@@ -92,7 +92,7 @@ $result = mysqli_query($conn, $query);
                             </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>                                                  
                             </div>
-                        </div>
+                        </div></div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
