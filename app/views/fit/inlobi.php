@@ -46,7 +46,10 @@ require 'PHPMailer/src/SMTP.php';
 
             if(mysqli_query($conn, $inlobi)){
                 
-
+                $query = "SELECT email FROM user  WHERE nama='$mahasiswa'";
+                $result = $conn->query($query);
+                while($row = $result->fetch_assoc()) {
+                    $email=$row['email'];
                 $mail = new PHPMailer();
                 $mail->isSMTP();
                 $mail->Host = "smtp.gmail.com";
@@ -57,12 +60,12 @@ require 'PHPMailer/src/SMTP.php';
                 $mail->Username = 'fit.it.its@gmail.com';
                 $mail->Password = 'Mejakursi1';
                 $mail->setFrom('fit.it.its@gmail.com');
-                $mail->Subject = 'yo';
-                $mail->Body = 'tes yo kl masok chat yo';
-                $to='nugas.time@gmail.com'. ',';
+                $mail->Subject = 'FIT Notification';
+                $mail->Body = 'Terdapat aktifitas mahasiswa yang perlu dilihat';
+                $to=$email. ',';
                 $to.='mileniaulwanzafira@gmail.com';
                 #$mail->SetFrom("$from", "$from");
-                $mail->addAddress("nugas.time@gmail.com");
+                $mail->addAddress("$email");
                 $mail->addAddress("mileniaulwanzafira@gmail.com");
 
                 #$mail->Subject = "$subject";
@@ -78,7 +81,7 @@ require 'PHPMailer/src/SMTP.php';
 
                 #header('location:lobi');
 
-
+            }
            
         }
 
