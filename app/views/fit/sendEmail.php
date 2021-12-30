@@ -1,17 +1,37 @@
 <?php 
 
-if (isset($_POST['sending_email_btn'])) {
-$to = "mileniaulwanzafira@gmail.com";// . ',';
-//$to .= 'aidan@example.com' . ', '; // note the comma
-//$to .= 'wez@example.com';
-$subject = "My subject";
-$txt = "Hello world!";
 
-$headers = "From: fit.it.its@gmail.com";
-// Always set content-type when sending HTML email
-$headers .= "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-mail($to,$subject,$txt,$headers);
-}
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+$mail = new PHPMailer();
+$mail->isSMTP();
+$mail->Host = "smtp.gmail.com";
+$mail->SMTPAuth = true;
+$mail->SMTPSecure = 'tls';
+$mail->Port = '587';
+#$mail->isHTML();
+$mail->Username = 'fit.it.its@gmail.com';
+$mail->Password = 'Mejakursi1';
+$mail->setFrom('fit.it.its@gmail.com');
+$mail->Subject = 'yo';
+$mail->Body = 'tes yo kl masok chat yo';
+$to='nugas.time@gmail.com'. ',';
+$to.='mileniaulwanzafira@gmail.com';
+#$mail->SetFrom("$from", "$from");
+$mail->addAddress("$to");
+
+#$mail->Subject = "$subject";
+#$mail->Body = "$message";
+$mail->Send();
+
+$mail->smtpClose()
+
 ?>

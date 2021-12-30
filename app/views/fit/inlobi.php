@@ -1,6 +1,15 @@
 <?php
 
 include('koneksi.php');
+#include('sendEmail.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
     if(isset($_POST['isi']))
         {
@@ -36,24 +45,41 @@ include('koneksi.php');
             
 
             if(mysqli_query($conn, $inlobi)){
-                header('location:lobi');
+                
 
-                $to = "mileniaulwanzafira@gmail.com" . ',';
-            $to .= 'nugas.time@gmail.com';// . ', '; // note the comma
-            //$to .= 'wez@example.com';
-            $subject = "My subject";
-            $txt = "Hello world!";
+                $mail = new PHPMailer();
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = '587';
+                $mail->isHTML(true);
+                $mail->Username = 'fit.it.its@gmail.com';
+                $mail->Password = 'Mejakursi1';
+                $mail->setFrom('fit.it.its@gmail.com');
+                $mail->Subject = 'yo';
+                $mail->Body = 'tes yo kl masok chat yo';
+                $to='nugas.time@gmail.com'. ',';
+                $to.='mileniaulwanzafira@gmail.com';
+                #$mail->SetFrom("$from", "$from");
+                $mail->addAddress("nugas.time@gmail.com");
+                $mail->addAddress("mileniaulwanzafira@gmail.com");
 
-            $headers = "From: fit.it.its@gmail.com";
-            // Always set content-type when sending HTML email
-            $headers .= "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                #$mail->Subject = "$subject";
+                #$mail->Body = "$message";
+                #$mail->Send();
+                if ( $mail->send() ) {
+                    echo "Email Sent..!";
+                }else{
+                    echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
+                }
 
-            mail($to,$subject,$txt,$headers);
-            }else{
-                echo "error: " .mysqli_error($conn);
-                header('Refresh : 3, location:lobi');
-            }
+                $mail->smtpClose();
+
+                #header('location:lobi');
+
+
+           
         }
 
-?>
+    }?>

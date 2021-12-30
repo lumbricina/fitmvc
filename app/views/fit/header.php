@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    require <?=ASSETS?>fit/vendor/PHPMailerAutoload.php
+    
 
     <title>FIT</title>
 
