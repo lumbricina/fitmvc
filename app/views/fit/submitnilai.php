@@ -18,16 +18,41 @@ if(isset($_POST['n1'])) {
     $sidang = "INSERT INTO hasilsidang (id, mahasiswa, username, role, peran, nilai1, nilai2, nilai3, nilai4, revisi) VALUES (NULL, '$mhs', '$uname', '$role', '$peran', '$n1', '$n2', '$n3', '$n4', '$revisi')";
 
     if(mysqli_query($conn,$sidang)){
-        header('location:penilaian', true, 302);
-    }else{
-        echo "Error: " . $sidang . "<br>" . mysqli_error($conn);
-        header('Refresh : 3, location:penilaian');
-    }
+        $query = "SELECT email FROM user WHERE nama='$mhs' OR status='1' OR username='$uname'";
+        $result = $conn->query($query);
+        while($row = $result->fetch_assoc()) {
+            $email=$row['email'];
 
+        
 
-    
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = '587';
+        $mail->isHTML(true);
+        $mail->Username = 'fit.it.its@gmail.com';
+        $mail->Password = 'Mejakursi1';
+        $mail->setFrom('fit.it.its@gmail.com');
+        $mail->Subject = 'FIT Notification';
+        $mail->Body = '<h4>Nilai telah masuk. Cek web untuk lebih detil</h4>';
+        $to=$email;#. ',';
+
+        $mail->addAddress("$email");
+
+        if ( $mail->send() ) {
+            header('location:penilaian', true, 302);
+            #echo "uda";
+        }else{
+            echo "Something is wrong. " . $mail->ErrorInfo;
+            header('Refresh : 3, location:penilaian');
+
+        }
+
+        $mail->smtpClose();
+
 }
-
-
-
+}
+}
 ?>

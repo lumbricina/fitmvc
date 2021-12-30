@@ -19,13 +19,9 @@ require 'PHPMailer/src/SMTP.php';
             #$emailpem2 = mysqli_fetch_array(mysqli_query($conn, "SELECT user.email FROM user INNER JOIN pembimbing ON pembimbing.pembimbing2=user.nama WHERE '$mahasiswa'=pembimbing.mahasiswa"));
 
             
-            $mhsemail = $_POST['emailmhs'];
-            
-
-            $pem1email = $_POST['emailpem1'];
-            
-
-            $pem2email = $_POST['emailpem2'];
+            #$mhsemail = $_POST['emailmhs'];
+            #$pem1email = $_POST['emailpem1'];
+            #$pem2email = $_POST['emailpem2'];
             
             $date = $_POST['date'];
             $time = $_POST['time'];
@@ -59,10 +55,13 @@ require 'PHPMailer/src/SMTP.php';
 
             if(mysqli_query($conn, $inlobi)){
                 
-                $query = "SELECT email FROM user  WHERE nama='$mahasiswa'";
+                $query = "SELECT user.email FROM user INNER JOIN pembimbing WHERE user.nama='$mahasiswa' OR user.nama=pembimbing.pembimbing1 OR user.nama=pembimbing.pembimbing2 ";
                 $result = $conn->query($query);
                 while($row = $result->fetch_assoc()) {
                     $email=$row['email'];
+
+                
+
                 $mail = new PHPMailer();
                 $mail->isSMTP();
                 $mail->Host = "smtp.gmail.com";
@@ -74,22 +73,17 @@ require 'PHPMailer/src/SMTP.php';
                 $mail->Password = 'Mejakursi1';
                 $mail->setFrom('fit.it.its@gmail.com');
                 $mail->Subject = 'FIT Notification';
-                $mail->Body = 'Terdapat aktifitas mahasiswa yang perlu dilihat';
-                $to=$email. ',';
-                $to.='mileniaulwanzafira@gmail.com';
-                #$mail->SetFrom("$from", "$from");
-                $mail->addAddress("$email");
-                $mail->addAddress("mileniaulwanzafira@gmail.com");
+                $mail->Body = '<h4>Terdapat aktivitas mahasiswa, tercatat di lobi, yang perlu dilihat</h4>';
+                $to=$email;#. ',';
 
-                #$mail->Subject = "$subject";
-                #$mail->Body = "$message";
-                #$mail->Send();
+                $mail->addAddress("$email");
+
                 if ( $mail->send() ) {
-                    #header('location:lobi');
-                    echo "uda";
+                    header('location:lobi');
+                    #echo "uda";
                 }else{
                     echo "Something is wrong. " . $mail->ErrorInfo;
-                    echo $penerima;
+                    
 
                 }
 

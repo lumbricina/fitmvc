@@ -27,11 +27,41 @@ if(isset($_POST['judul']))
     $prop="INSERT INTO proposal (id, date, time, nama, pembimbing1, pembimbing2, judul, ringkasan, status, filename) VALUES (NULL, '$date', '$time', '$mahasiswa','$pem1','$pem2','$judul','$ringkasan','1', '$filename')";
 
     if(mysqli_query($conn, $prop)){
-        header('location:pengajuan');
-    }else{
-        echo "eror: " . mysqli_error($conn);
-        header('Refresh : 3, location:pengajuan');
+        $query = "SELECT email FROM user WHERE nama='$mahasiswa' OR status='1' ";
+                $result = $conn->query($query);
+                while($row = $result->fetch_assoc()) {
+                    $email=$row['email'];
+
+                
+
+                $mail = new PHPMailer();
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = '587';
+                $mail->isHTML(true);
+                $mail->Username = 'fit.it.its@gmail.com';
+                $mail->Password = 'Mejakursi1';
+                $mail->setFrom('fit.it.its@gmail.com');
+                $mail->Subject = 'FIT Notification';
+                $mail->Body = '<h4>Proposal telah terupload. Cek web untuk lebih detil</h4>';
+                $to=$email;#. ',';
+
+                $mail->addAddress("$email");
+
+                if ( $mail->send() ) {
+                    header('location:pengajuan');
+                    #echo "uda";
+                }else{
+                    echo "Something is wrong. " . $mail->ErrorInfo;
+                    header('Refresh : 3, location:pengajuan');
+
+                }
+
+                $mail->smtpClose();
+    
     }
 }
-
+}
 ?>

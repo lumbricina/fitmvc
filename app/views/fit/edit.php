@@ -24,8 +24,46 @@
     if(isset($_POST['id_lobi'])){
     $update="UPDATE lobi WHERE (id_lobi='" . $_GET['id_lobi'] . "' AND date='" . $_GET['date'] . "' AND time='" . $_GET['time'] . "'AND isi='" . $_GET['isi'] . "')";
     if(mysqli_query($conn, $update)){
+
+        $pem1 = "SELECT pembimbing1 FROM pembimbing WHERE mahasiswa='$nama'";
+        $query = "SELECT user.email FROM user INNER JOIN pembimbing WHERE user.nama='$nama' OR user.nama='$pem1'";
+        $result = $conn->query($query);
+        while($row = $result->fetch_assoc()) {
+            $email=$row['email'];
+
+        
+
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = '587';
+        $mail->isHTML(true);
+        $mail->Username = 'fit.it.its@gmail.com';
+        $mail->Password = 'Mejakursi1';
+        $mail->setFrom('fit.it.its@gmail.com');
+        $mail->Subject = 'FIT Notification';
+        $mail->Body = '<h4>Lobi telah diedit. Cek web untuk lebih detil</h4>';
+        $to=$email;#. ',';
+
+        $mail->addAddress("$email");
+
+        if ( $mail->send() ) {
+            header('location:penilaian', true, 302);
+            #echo "uda";
+        }else{
+            echo "Something is wrong. " . $mail->ErrorInfo;
+            header('Refresh : 3, location:penilaian');
+
+        }
+
+        $mail->smtpClose();
+
+
+
         header('location:lobi');}
-    }
+    }}
     $result = mysqli_query($conn,"SELECT * FROM lobi WHERE (id_lobi='" . $_GET['id_lobi'] . "' AND date='" . $_GET['date'] . "' AND time='" . $_GET['time'] . "'AND isi='" . $_GET['isi'] . "')");
     $row= mysqli_fetch_array($result);
 

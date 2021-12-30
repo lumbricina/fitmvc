@@ -24,6 +24,43 @@
         $pem2=$_POST['pembimbing2'];
         mysqli_query($conn,"UPDATE proposal set status='3' WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
         mysqli_query($conn,"INSERT INTO pembimbing(id, mahasiswa, pembimbing1, pembimbing2) VALUES (NULL, '$name', '$pem1', '$pem2')");
+
+
+        $query = "SELECT email FROM user WHERE nama='$nama' OR status='1' OR nama='$pem1' OR nama='$pem2'";
+        $result = $conn->query($query);
+        while($row = $result->fetch_assoc()) {
+            $email=$row['email'];
+
+        
+
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = '587';
+        $mail->isHTML(true);
+        $mail->Username = 'fit.it.its@gmail.com';
+        $mail->Password = 'Mejakursi1';
+        $mail->setFrom('fit.it.its@gmail.com');
+        $mail->Subject = 'FIT Notification';
+        $mail->Body = '<h4>Proposal telah disetujui. Cek web untuk lebih detil</h4>';
+        $to=$email;#. ',';
+
+        $mail->addAddress("$email");
+
+        if ( $mail->send() ) {
+            header('location:penilaian', true, 302);
+            #echo "uda";
+        }else{
+            echo "Something is wrong. " . $mail->ErrorInfo;
+            header('Refresh : 3, location:penilaian');
+
+        }
+
+        $mail->smtpClose();
+
+}
     }
     $result = mysqli_query($conn,"SELECT * FROM proposal WHERE (nama='" . $_GET['nama'] . "' AND pembimbing1='" . $_GET['pembimbing1'] . "' AND pembimbing2='" . $_GET['pembimbing2'] . "' AND judul='" . $_GET['judul'] . "')");
     $row= mysqli_fetch_array($result);

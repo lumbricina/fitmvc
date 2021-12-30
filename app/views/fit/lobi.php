@@ -54,24 +54,14 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
                                     <input type="file" accept="image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" id="file1" name="file1" class="form-control form-control-file">
                             </div>
 
-                            <!-- INI NYOBA GA BISA JUGA BIAR KEPANGGEL DARI SINI MKSDNY TP G MAO TERNYATA -->
-                            <?php 
-                            $emailmhs = mysqli_fetch_array(mysqli_query($conn, "SELECT email FROM user WHERE nama='$nama'")); 
-                            echo "<input type='hidden' id = 'emailmhs' name='emailmhs' value='".implode($emailmhs) ."'/>";
-
-                            $emailpem1 = mysqli_fetch_array(mysqli_query($conn, "SELECT user.email FROM user INNER JOIN pembimbing ON pembimbing.pembimbing1=user.nama WHERE '$nama'=pembimbing.mahasiswa"));
-                            echo "<input type='hidden' id = 'emailpem1' name='emailpem1' value='".implode($emailpem1) ."'/>";
                             
-                            $emailpem2 = mysqli_fetch_array(mysqli_query($conn, "SELECT user.email FROM user INNER JOIN pembimbing ON pembimbing.pembimbing2=user.nama WHERE '$nama'=pembimbing.mahasiswa"));
-                            echo "<input type='hidden' id = 'emailpem2' name='emailpem2' value='".$emailpem2 ."'/>";
-
-                            ?>
                             
                             </div>
+                            
 
                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Submit"></input>
                             <!-- <input type="hidden" name="button_pressed" value="1" onclick="sendEmail()" /> -->
-                            </div></form></div>
+                            </div></form>
 <!-- 
 <script>
 function sendemail()

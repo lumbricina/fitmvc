@@ -15,11 +15,41 @@ if(isset($_POST['pen1']))
     $jadwal="INSERT INTO jadwalsidang (id, tanggal, waktu, mahasiswa, penilai1, penilai2, penilai3) VALUES (NULL, '$date', '$time', '$mahasiswa', '$pen1', '$pen2', '$pen3') ";
 
     if(mysqli_query($conn, $jadwal)){
-        header('location:jadwalsidang');
-    }else{
-        echo "eror: " . mysqli_error($conn);
-        header('Refresh : 3, location:jadwalsidang');
+        $query = "SELECT email FROM user WHERE nama='$mahasiswa' OR status='1' OR nama='$pen1' OR nama='$pen2' OR nama='$pen3' ";
+                $result = $conn->query($query);
+                while($row = $result->fetch_assoc()) {
+                    $email=$row['email'];
+
+                
+
+                $mail = new PHPMailer();
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = '587';
+                $mail->isHTML(true);
+                $mail->Username = 'fit.it.its@gmail.com';
+                $mail->Password = 'Mejakursi1';
+                $mail->setFrom('fit.it.its@gmail.com');
+                $mail->Subject = 'FIT Notification';
+                $mail->Body = '<h4>Ada jadwal baru. Cek web untuk lebih detil</h4>';
+                $to=$email;#. ',';
+
+                $mail->addAddress("$email");
+
+                if ( $mail->send() ) {
+                    header('location:jadwalsidang');
+                    #echo "uda";
+                }else{
+                    echo "Something is wrong. " . $mail->ErrorInfo;
+                    header('Refresh : 3, location:jadwalsidang');
+
+                }
+
+                $mail->smtpClose();
+    
     }
 }
-
+}
 ?>
