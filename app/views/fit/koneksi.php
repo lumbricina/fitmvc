@@ -10,7 +10,7 @@ if(isset($_POST['login'])){
 }else{
 
   //Checking Login Detail
-  $result=mysqli_query($conn,"SELECT*FROM user WHERE username='$username' AND password='$password'");
+  $result=mysqli_query($conn,"SELECT * FROM user WHERE username='$username' AND password='$password'");
   $row=mysqli_fetch_assoc($result);
   $count=mysqli_num_rows($result);
   if($count==1){
@@ -18,7 +18,8 @@ if(isset($_POST['login'])){
           'nama'=>$row['nama'],
           'username'=>$row['username'],
           'password'=>$row['password'],
-          'role'=>$row['role']
+          'role'=>$row['role'],
+          'email'=>$row['email']
     );
 
     $role=$_SESSION['user']['role'];
