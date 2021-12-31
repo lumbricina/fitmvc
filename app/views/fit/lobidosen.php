@@ -39,6 +39,7 @@ if(!isset($_SESSION['user'])){
                                             <th>Waktu</th>
                                             <th>Isi</th>
                                             <th>Status</th>
+                                            <th>File</th>
                                             <th>Revisi</th>
                                             <th>Action</th>
                                         </tr>
@@ -58,6 +59,7 @@ if(!isset($_SESSION['user'])){
                                             }elseif($row["status"]=='3'){
                                                 echo 'sudah disetujui';
                                             }else{};?></td>
+                                            <td><a href="uploadLobi/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                                             <td><?php echo$row["revisi"];?></td>
                                             <td>
                                             <div class="row">
