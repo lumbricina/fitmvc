@@ -1,6 +1,13 @@
 <?php
 
 include('koneksi.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 if(isset($_POST['submit'])) {
 
@@ -12,7 +19,7 @@ if(isset($_POST['submit'])) {
     $adduser = "INSERT INTO user (id, username, password, nama, role, email) VALUES (NULL, '$uname', '$uname', '$nama', '$role', '$email')";
 
     if(mysqli_query($conn,$adduser)){
-        $query = "SELECT email FROM user WHERE nama='$nama' OR status='1'";
+        $query = "SELECT email FROM user WHERE nama='$nama' OR role='1'";
         $result = $conn->query($query);
         while($row = $result->fetch_assoc()) {
             $email=$row['email'];

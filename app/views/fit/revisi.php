@@ -1,6 +1,13 @@
 <?php
 
 include('koneksi.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 if(isset($_POST['pem2']))
 {
@@ -16,7 +23,7 @@ if(isset($_POST['pem2']))
     if(mysqli_query($conn, $props)){
 
 
-        $query = "SELECT email FROM user WHERE nama='$nama' OR status='1' OR nama='$pem1' OR nama='$pem2'";
+        $query = "SELECT email FROM user WHERE nama='$nama' OR role='1' OR nama='$pem1' OR nama='$pem2'";
         $result = $conn->query($query);
         while($row = $result->fetch_assoc()) {
             $email=$row['email'];

@@ -1,6 +1,15 @@
 <?php
 
 include('koneksi.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 $uname=$_SESSION['user']['username'];
 
 if(isset($_POST['n1'])) {
@@ -18,7 +27,7 @@ if(isset($_POST['n1'])) {
     $sidang = "INSERT INTO hasilsidang (id, mahasiswa, username, role, peran, nilai1, nilai2, nilai3, nilai4, revisi) VALUES (NULL, '$mhs', '$uname', '$role', '$peran', '$n1', '$n2', '$n3', '$n4', '$revisi')";
 
     if(mysqli_query($conn,$sidang)){
-        $query = "SELECT email FROM user WHERE nama='$mhs' OR status='1' OR username='$uname'";
+        $query = "SELECT email FROM user WHERE nama='$mhs' OR role='1' OR username='$uname'";
         $result = $conn->query($query);
         while($row = $result->fetch_assoc()) {
             $email=$row['email'];

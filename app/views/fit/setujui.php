@@ -11,6 +11,16 @@
     }else {
     
     }
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/SMTP.php';
+
+
     $data['page_title'] = "setujui";$this->view("fit/headeradmin", $data);
     include('koneksi.php');
     $nama=$_SESSION['user']['nama'];
@@ -26,7 +36,7 @@
         mysqli_query($conn,"INSERT INTO pembimbing(id, mahasiswa, pembimbing1, pembimbing2) VALUES (NULL, '$name', '$pem1', '$pem2')");
 
 
-        $query = "SELECT email FROM user WHERE nama='$nama' OR status='1' OR nama='$pem1' OR nama='$pem2'";
+        $query = "SELECT email FROM user WHERE nama='$nama' OR role='1' OR nama='$pem1' OR nama='$pem2'";
         $result = $conn->query($query);
         while($row = $result->fetch_assoc()) {
             $email=$row['email'];
@@ -50,11 +60,11 @@
         $mail->addAddress("$email");
 
         if ( $mail->send() ) {
-            header('location:penilaian', true, 302);
+            #header('location:setujui', true, 302);
             #echo "uda";
         }else{
             echo "Something is wrong. " . $mail->ErrorInfo;
-            header('Refresh : 3, location:penilaian');
+            #header('Refresh : 3, location:setujui');
 
         }
 
