@@ -124,7 +124,27 @@ $sidang="SELECT * FROM jadwalsidang";?>
                             </div>
                         </div>
                             </div>
+
+                            <div class="row col-lg">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Dokumen</h6>
+                                </div>
+                            <div class="card-body">
+                                <a href="dokumen/lembar pengesahan 1 pembimbing.docx" download rel="noopener noreferrer" target="_blank"> Download Lembar Pengesahan (1 pembimbing) </a><br>
+                                <a href="dokumen/lembar pengesahan 2 pembimbing.docx" download rel="noopener noreferrer" target="_blank"> Download Lembar Pengesahan (2 pembimbing) </a><br>
+                                <a href="dokumen/pembatalan ta.docx" download rel="noopener noreferrer" target="_blank"> Download Formulir Pembatalan Tugas Akhir </a><br>
+                                <a href="dokumen/proposal.docx" download rel="noopener noreferrer" target="_blank"> Download Format Proposal</a><br>
+                                <a href="dokumen/SOP Tugas Akhir.docx" download rel="noopener noreferrer" target="_blank"> Download SOP</a><br>
+                                <a href="dokumen/Prosedur TA.pptx" download rel="noopener noreferrer" target="_blank"> Download Prosedur</a><br>
+                                <a href="dokumen/panduan.docx" download rel="noopener noreferrer" target="_blank"> Download Panduan Penggunaan</a><br>
+                            </div>
                         </div>
+                        </div>
+
+                        
                     </div>
 
 
