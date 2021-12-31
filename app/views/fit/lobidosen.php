@@ -2,8 +2,6 @@
 if(!isset($_SESSION['user'])){
     header('location:login');
     session_destroy();
-}elseif ($_SESSION['user']['role']!='2') {
-    session_destroy();
 }elseif ($_SESSION['user']['role']=='3') {
     session_destroy();
 }elseif ($_SESSION['user']['role']=='1') {
@@ -12,9 +10,20 @@ if(!isset($_SESSION['user'])){
 
 }
     
-    $data['page_title'] = "LobiDosen";$this->view("fit/headerdosen", $data); include("koneksi.php");
-    $user=$_SESSION['user']['nama'];
-    $query = "SELECT lobi.* FROM lobi INNER JOIN pembimbing ON lobi.nama=pembimbing.mahasiswa WHERE pembimbing.pembimbing1='$user'";
+    $data['page_title'] = "LobiDosen"; include("koneksi.php");
+
+    if(!isset($_SESSION['user'])){
+        header('location:login');
+        session_destroy();
+    }elseif ($_SESSION['user']['role']=='2') {
+        $this->view("fit/headerdosen", $data);
+        $user=$_SESSION['user']['nama'];
+        $query = "SELECT lobi.* FROM lobi INNER JOIN pembimbing ON lobi.nama=pembimbing.mahasiswa WHERE pembimbing.pembimbing1='$user'";
+        }elseif ($_SESSION['user']['role']=='4') {
+            $this->view("fit/headerpem2", $data);
+            $user=$_SESSION['user']['nama'];
+            $query = "SELECT lobi.* FROM lobi INNER JOIN pembimbing ON lobi.nama=pembimbing.mahasiswa WHERE pembimbing.pembimbing2='$user'";}
+    
     ?>
 
                 <!-- Begin Page Content -->
@@ -41,7 +50,8 @@ if(!isset($_SESSION['user'])){
                                             <th>Status</th>
                                             <th>File</th>
                                             <th>Revisi</th>
-                                            <th>Action</th>
+                                            <?php if ($_SESSION['user']['role']=='2') {
+                                            echo '<th>Action</th>';}?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,6 +71,7 @@ if(!isset($_SESSION['user'])){
                                             }else{};?></td>
                                             <td><a href="uploadLobi/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                                             <td><?php echo$row["revisi"];?></td>
+                                            <?php if ($_SESSION['user']['role']=='2') {?>
                                             <td>
                                             <div class="row">
                                                 <div class="dropdown no-arrow ml-2">
@@ -74,7 +85,7 @@ if(!isset($_SESSION['user'])){
                                                     <input class="btn btn-success btn-circle btn-sm ml-2" type="submit" name="setuju" id="setuju" title="Setujui" value="" data-target="#setuju" onclick="popSetuju('<?= $row['nama']; ?>', '<?= $row['pembimbing1']; ?>', '<?= $row['pembimbing2']; ?>')">
                                                     </form></input>-->
                                             </div></div>
-                                            </td><?php };?>
+                                            </td><?php }};?>
                                         </tr>
                                     </tbody>
                                 </table>
