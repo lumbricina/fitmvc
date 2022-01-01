@@ -17,6 +17,7 @@ if(!isset($_SESSION['user'])){
 $tawar="SELECT * FROM tawarandosen";
 $nama=$_SESSION['user']['nama'];
 $mahasiswa="SELECT * FROM pembimbing WHERE pembimbing1='$nama'";
+$sidang="SELECT * FROM jadwalsidang";
 ?>
 
         
@@ -113,9 +114,59 @@ $mahasiswa="SELECT * FROM pembimbing WHERE pembimbing1='$nama'";
                         </div>
                     </div>
 
+                    <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Jadwal Sidang</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                            <div class="table-responsive-sm">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Jam</th>
+                                            <th>Mahasiswa</th>
+                                            <th>Penilai 1</th>
+                                            <th>Penilai 2</th>
+                                            <th>Penilai 3</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                            $result = $conn->query($sidang);
+                                            if (!empty($result) && $result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo$row["tanggal"];?></td>
+                                            <td><?php echo$row["waktu"];?></td>
+                                            <td><?php echo$row["mahasiswa"];?> </td>
+                                            <td><?php echo$row["penilai1"];?></td>
+                                            <td><?php echo$row["penilai2"];?></td>
+                                            <td><?php echo$row["penilai3"];}}?></td>
+                                        
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-primary" href="jadwalsidang">Tambah</a>
+                            </div>
+                        </div>
+                            </div></div>
+
 
                 </div>
                 <!-- /.container-fluid -->
+
+                
 
             </div>
             <!-- End of Main Content -->

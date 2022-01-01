@@ -20,6 +20,7 @@ $nama=$_SESSION['user']['nama'];
 $nrp=mysqli_fetch_assoc(mysqli_query($conn,"SELECT username FROM user WHERE nama='$nama'"));
 $pem="SELECT * FROM pembimbing WHERE mahasiswa='$nama'";
 $judul=mysqli_fetch_assoc(mysqli_query($conn,"SELECT judul FROM proposal WHERE nama='$nama'"));
+$sidang="SELECT * FROM jadwalsidang WHERE mahasiswa='$nama'";
 ?>
 
 
@@ -46,7 +47,7 @@ $judul=mysqli_fetch_assoc(mysqli_query($conn,"SELECT judul FROM proposal WHERE n
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <p>Hubungi dosen terkait untuk mengambil judul :v</p>
+                                    <p>Hubungi dosen terkait untuk mengambil judul</p>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -107,7 +108,53 @@ $judul=mysqli_fetch_assoc(mysqli_query($conn,"SELECT judul FROM proposal WHERE n
 
                             </div>
 
-                            <div class="row col-lg">
+                            
+                </div>
+
+                
+                <!-- /.container-fluid -->
+
+            </div></div></div>
+            <div class="row col-lg">
+
+             <div class="row">
+                    <div class="col-xl-12 col-lg-9">
+                    <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Jadwal Sidang</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                            <div class="table-responsive-sm">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Jam</th>
+                                            <th>Mahasiswa</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                            $result = $conn->query($sidang);
+                                            if (!empty($result) && $result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo$row["tanggal"];?></td>
+                                            <td><?php echo$row["waktu"];?></td>
+                                            <td><?php echo$row["mahasiswa"];}}?> </td>
+                                        
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                            </div>
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -124,10 +171,8 @@ $judul=mysqli_fetch_assoc(mysqli_query($conn,"SELECT judul FROM proposal WHERE n
                                 <a href="dokumen/panduan.docx" download rel="noopener noreferrer" target="_blank"> Download Panduan Penggunaan</a><br>
                             </div>
                         </div>
-                </div>
-                <!-- /.container-fluid -->
 
-            </div>
+                   </div>
             <!-- End of Main Content -->
 
 

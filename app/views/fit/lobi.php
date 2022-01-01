@@ -24,7 +24,7 @@ $query = "SELECT*FROM lobi WHERE nama='$nama'";
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Log Book</h1>
-                    <p class="mb-4">Diary</p>
+                    <p class="mb-4">Mahasiswa harap mengisi log book sesuai dengan pengerjaan tugas akhir dan lampirkan bukti dalam bentuk gambar maupun doc/pdf</p>
 
                     <!-- Form Lobi -->
                     <div class="card shadow mb-4">
