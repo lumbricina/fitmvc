@@ -139,7 +139,7 @@ $sidang="SELECT * FROM jadwalsidang";?>
                                 <a href="dokumen/proposal.docx" download rel="noopener noreferrer" target="_blank"> Download Format Proposal</a><br>
                                 <a href="dokumen/SOP Tugas Akhir.docx" download rel="noopener noreferrer" target="_blank"> Download SOP</a><br>
                                 <a href="dokumen/Prosedur TA.pptx" download rel="noopener noreferrer" target="_blank"> Download Prosedur</a><br>
-                                <a href="dokumen/panduan.docx" download rel="noopener noreferrer" target="_blank"> Download Panduan Penggunaan</a><br>
+                                <a href="dokumen/panduan.pptx" download rel="noopener noreferrer" target="_blank"> Download Panduan Penggunaan</a><br>
                             </div>
                         </div>
                         </div>
