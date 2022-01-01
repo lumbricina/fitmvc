@@ -11,7 +11,7 @@
     }else {
     
     }
-    $data['page_title'] = "setujuilobi";$this->view("fit/headeradmin", $data);
+    $data['page_title'] = "setujuilobi";$this->view("fit/headerdosen", $data);
     include('koneksi.php');
 
     $nama=$_GET['nama'];
